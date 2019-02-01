@@ -8,6 +8,7 @@ class AddWordsPage extends React.Component {
   state = {
     originalWord: '',
     translationWord: '',
+    primaryTranslationWord: '',
   }
 
   onOriginalWordChange = (event) => {
@@ -22,13 +23,30 @@ class AddWordsPage extends React.Component {
     const { originalWord } = this.state;
     axios.post(`${API_URL}/translation`, {original: originalWord})
       .then((response) => {
-        this.setState({ translationWord: response.data[0].translation })
+        this.setState({ translationWord: response.data[0].translation, primaryTranslationWord: response.data[0].translation })
       })
   }
 
   onAddButtonClick = () => {
-    const { originalWord, translationWord } = this.state;
-    console.log(`${originalWord} - ${translationWord}`);
+    let { originalWord, translationWord, primaryTranslationWord } = this.state;
+    translationWord = translationWord.trim();
+    let custom = false;
+    if (translationWord !== primaryTranslationWord) {
+      custom = true;
+    }
+    if (originalWord !== '' && translationWord !== '') {
+      axios.post(`${API_URL}/word`, {original: originalWord, translation: translationWord, custom})
+      .then((response) => {
+        if (response.status === 200) {
+          this.setState({ originalWord: '', translationWord: '', primaryTranslationWord: '' });
+        }
+      })
+      .catch((err) => {
+        // FIXME: error handler
+      })
+    } else {
+      // FIXME: info user
+    }
   }
 
   render() {
