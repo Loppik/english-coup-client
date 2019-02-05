@@ -15,7 +15,7 @@ class Login extends React.Component {
             <input type="password" required />
             <div className={styles.labelText}>password</div>
           </label>
-          <button>Submit</button>
+          <button className={styles.authBtn}>Submit</button>
         </form>
       </div>
     )
