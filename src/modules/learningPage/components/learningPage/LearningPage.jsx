@@ -2,15 +2,16 @@ import React from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../../configs/config';
 
-import arrowLeft from '../../../../icons/arrow_left.svg';
-import arrowRight from '../../../../icons/arrow_right.svg';
+import Viewing from '../viewing/Viewing';
+
 import styles from './learningPage.css';
 
 class LearningPage extends React.Component {
   state = {
     learningWords: [],
-    nowWatchWordIndex: 0,
-    count: 5
+    studyModes: [],
+    index: 0, 
+    wordsCount: 5
   }
 
   componentDidMount() {
@@ -23,70 +24,32 @@ class LearningPage extends React.Component {
       .catch((err) => {
         // FIXME: error handler
       })
+    this.setState({ studyModes: ['viewing'] });
   }
 
-  swipeLeft = () => {
-    const { nowWatchWordIndex, count } = this.state;
-    if (nowWatchWordIndex === 0) {
-      this.setState({ nowWatchWordIndex: count - 1 })
-    } else {
-      this.setState((prev) => ({ nowWatchWordIndex: prev.nowWatchWordIndex - 1 }))
-    }
-  }
-
-  swipeRight = () => {
-    const { nowWatchWordIndex, count } = this.state;
-    if (nowWatchWordIndex === count - 1) {
-      this.setState({ nowWatchWordIndex: 0 })
-    } else {
-      this.setState((prev) => ({ nowWatchWordIndex: prev.nowWatchWordIndex + 1 }))
-    }
-  }
-
-  isAllWordsWatched = () => {
-    const { learningWords, count } = this.state;
-    const watchedWords = learningWords.filter((word) => word.watched);
-    return watchedWords.length === count;
+  onCompliteMode = () => {
+    this.setState((prev) => ({ index: prev.index + 1 }));
   }
 
   render() {
-    const { learningWords, nowWatchWordIndex } = this.state;
+    const { learningWords, studyModes, index, wordsCount } = this.state;
     if (learningWords.length === 0) {
       return <div></div>
     }
 
-    const nowWord = learningWords[nowWatchWordIndex];
-    if (!nowWord.watched) {
-      nowWord.watched = true;
+    let component;
+    switch (studyModes[index]) {
+      case 'viewing':
+        component = <Viewing words={learningWords} count={wordsCount} onComplite={this.onCompliteMode} />;
+        break;
+      
+      default:
+        component = <div>You are awesome</div>
+        break;
     }
-    const isAllWordsWatched = this.isAllWordsWatched();
 
     return (
-      <div className={styles.content}>
-        <div className={styles.cardAndSwitch}>
-          <div className={styles.switch} onClick={this.swipeLeft}>
-            <img src={arrowLeft} alt=""></img>
-          </div>
-          <div className={styles.flipCard}>
-            <div className={styles.flipCardInner}>
-              <div className={styles.flipCardFront}>
-                <p>{ nowWord.original }</p>
-              </div>
-              <div className={styles.flipCardBack}>
-                <p>{ nowWord.translation }</p>
-              </div>
-            </div>
-          </div>
-          <div className={styles.switch} onClick={this.swipeRight}>
-            <img src={arrowRight} alt=""></img>
-          </div>
-        </div>
-        {isAllWordsWatched && 
-          <div className={styles.remembered}>
-            <h4>Remembered</h4>
-          </div>
-        }
-      </div>
+      component 
     )
   }
 }
