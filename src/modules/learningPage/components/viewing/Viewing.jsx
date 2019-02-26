@@ -14,7 +14,7 @@ class Viewing extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ words: this.props.words, count: this.props.count, onComplite: this.props.onComplete });
+    this.setState({ words: this.props.words, count: this.props.count, onComplete: this.props.onComplete });
   }
 
   swipeLeft = () => {

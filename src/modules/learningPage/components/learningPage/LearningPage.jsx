@@ -4,6 +4,7 @@ import { API_URL } from '../../../../configs/config';
 
 import Viewing from '../viewing/Viewing';
 import Choice from '../choice/Choice';
+import Typing from '../typing/Typing';
 
 class LearningPage extends React.Component {
   state = {
@@ -23,7 +24,7 @@ class LearningPage extends React.Component {
       .catch((err) => {
         // FIXME: error handler
       })
-    this.setState({ studyModes: ['choice translation-original', 'choice original-translation', 'viewing'] });
+    this.setState({ studyModes: ['typing', 'choice translation-original', 'choice original-translation', 'viewing'] });
   }
 
   onCompleteMode = () => {
@@ -46,6 +47,9 @@ class LearningPage extends React.Component {
         break;
       case 'choice translation-original':
         component = <Choice words={learningWords} count={wordsCount} onComplete={this.onCompleteMode} isOriginalTranslation={false} />
+        break;
+      case 'typing':
+        component = <Typing words={learningWords} count={wordsCount} onComplete={this.onCompleteMode} />
         break;
       default:
         component = <div>You are awesome</div>
