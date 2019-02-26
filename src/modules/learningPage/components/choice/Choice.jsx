@@ -1,17 +1,18 @@
 import React from 'react';
 
-import styles from './choiceOriginalTranslation.css';
+import styles from './choice.css';
 
-class ChoiceOriginalTranslation extends React.Component {
+class Choice extends React.Component {
   state = {
     words: [],
     nowWordIndex: 0,
     count: null,
     onComplete: null,
+    isOriginalTranslation: true
   }
 
   componentDidMount() {
-    this.setState({ words: this.props.words, count: this.props.count, onComplete: this.props.onComplete })
+    this.setState({ words: this.props.words, count: this.props.count, onComplete: this.props.onComplete, isOriginalTranslation: this.props.isOriginalTranslation })
   }
 
   getRandomInt = max => Math.floor(Math.random()*max);
@@ -29,7 +30,7 @@ class ChoiceOriginalTranslation extends React.Component {
     return ar;
   }
 
-  getFourTranslationOptions = () => {
+  getFourOptions = () => {
     const { words, nowWordIndex } = this.state;
     let w = words.slice();
     let res = [w[nowWordIndex]];
@@ -43,9 +44,9 @@ class ChoiceOriginalTranslation extends React.Component {
     return this.shuffle(res);
   }
 
-  clickOnOption = translation => {
+  clickOnOption = option => {
     const { words, nowWordIndex } = this.state;
-    if (translation.word_id === words[nowWordIndex].word_id) {
+    if (option.word_id === words[nowWordIndex].word_id) {
       this.setState((prev) => ({ nowWordIndex: prev.nowWordIndex + 1 }));
     } else {
       alert('Увы и ах, но данный ответ неверный')
@@ -53,22 +54,23 @@ class ChoiceOriginalTranslation extends React.Component {
   }
 
   render() {
-    const { words, nowWordIndex, count, onComplete } = this.state;
-    const translationOptions = this.getFourTranslationOptions();
+    const { words, nowWordIndex, count, onComplete, isOriginalTranslation } = this.state;
+    const options = this.getFourOptions();
     if (words.length === 0) {
       return <div></div>
     }
     if (nowWordIndex === count) {
       onComplete();
       return <div></div>
-    } 
+    }
+    const mainWord = words[nowWordIndex];
     return (
       <div className={styles.content}>
-        <h3>{ words[nowWordIndex].original }</h3>
-        { translationOptions.map((translation) => <div className={styles.option} key={translation.word_id} onClick={() => this.clickOnOption(translation)}>{ translation.translation }</div>) }
+        <h3>{ isOriginalTranslation ? mainWord.original : mainWord.translation }</h3>
+        { options.map((option) => <div className={styles.option} key={option.word_id} onClick={() => this.clickOnOption(option)}>{ isOriginalTranslation ? option.translation : option.original }</div>) }
       </div>
     )
   }
 }
 
-export default ChoiceOriginalTranslation;
+export default Choice;

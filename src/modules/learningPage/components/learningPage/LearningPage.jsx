@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_URL } from '../../../../configs/config';
 
 import Viewing from '../viewing/Viewing';
-import ChoiceOriginalTranslation from '../choiceOriginalTranslation/choiceOriginalTranslation';
+import Choice from '../choice/Choice';
 
 class LearningPage extends React.Component {
   state = {
@@ -23,7 +23,7 @@ class LearningPage extends React.Component {
       .catch((err) => {
         // FIXME: error handler
       })
-    this.setState({ studyModes: ['choice original-translation', 'viewing'] });
+    this.setState({ studyModes: ['choice translation-original', 'choice original-translation', 'viewing'] });
   }
 
   onCompleteMode = () => {
@@ -42,9 +42,10 @@ class LearningPage extends React.Component {
         component = <Viewing words={learningWords} count={wordsCount} onComplete={this.onCompleteMode} />;
         break;
       case 'choice original-translation':
-        component = <ChoiceOriginalTranslation words={learningWords} count={wordsCount} onComplete={this.onCompleteMode} />
+        component = <Choice words={learningWords} count={wordsCount} onComplete={this.onCompleteMode} isOriginalTranslation={true} />
         break;
       case 'choice translation-original':
+        component = <Choice words={learningWords} count={wordsCount} onComplete={this.onCompleteMode} isOriginalTranslation={false} />
         break;
       default:
         component = <div>You are awesome</div>
