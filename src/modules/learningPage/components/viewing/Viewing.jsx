@@ -10,11 +10,11 @@ class Viewing extends React.Component {
     words: [],
     nowWatchWordIndex: 0,
     count: null,
-    onComplite: null,
+    onComplete: null,
   }
 
   componentDidMount() {
-    this.setState({ words: this.props.words, count: this.props.count, onComplite: this.props.onComplite });
+    this.setState({ words: this.props.words, count: this.props.count, onComplite: this.props.onComplete });
   }
 
   swipeLeft = () => {
@@ -42,7 +42,7 @@ class Viewing extends React.Component {
   }
 
   render() {
-    const { words, nowWatchWordIndex, onComplite } = this.state;
+    const { words, nowWatchWordIndex, onComplete } = this.state;
     if (words.length === 0) {
       return <div></div>
     }
@@ -74,7 +74,7 @@ class Viewing extends React.Component {
           </div>
         </div>
         {isAllWordsWatched && 
-          <div className={styles.remembered} onClick={onComplite}>
+          <div className={styles.remembered} onClick={onComplete}>
             <h4>Remembered</h4>
           </div>
         }
