@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 import AddWordsPage from '../../../addWordsPage/components/addWordsPage/AddWordsPage';
-import LearningPage from '../../../learningPage/components/learningPage/LearningPage';
+import LearningPage from '../../../learningPage/containers/LearningPage';
 
 class App extends Component {
   render() {

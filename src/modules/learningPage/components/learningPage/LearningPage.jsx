@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import { API_URL } from '../../../../configs/config';
 
 import Viewing from '../viewing/Viewing';
 import Choice from '../choice/Choice';
@@ -8,22 +6,14 @@ import Typing from '../typing/Typing';
 
 class LearningPage extends React.Component {
   state = {
-    learningWords: [],
     studyModes: [],
     index: 0, 
     wordsCount: 5
   }
 
   componentDidMount() {
-    axios.get(`${API_URL}/userword`)
-      .then((response) => {
-        if (response.status === 200) {
-          this.setState({ learningWords: response.data })
-        }
-      })
-      .catch((err) => {
-        // FIXME: error handler
-      })
+    const { dispatchGetUserwords } = this.props;
+    dispatchGetUserwords();
     this.setState({ studyModes: ['typing', 'choice translation-original', 'choice original-translation', 'viewing'] });
   }
 
@@ -32,8 +22,9 @@ class LearningPage extends React.Component {
   }
 
   render() {
-    const { learningWords, studyModes, index, wordsCount } = this.state;
-    if (learningWords.length === 0) {
+    const { studyModes, index, wordsCount } = this.state;
+    const { learningWords, isLoading } = this.props;
+    if (isLoading || learningWords === null || learningWords.length === 0) {
       return <div></div>
     }
 
