@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import LearningPage from '../components/learningPage/LearningPage';
-import { getUserwords } from '../actions/learningPage';
+import { getUserwordsRequest } from '../actions/learningPage';
 
 const mapStateToProps = state => ({
   learningWords: state.learningWords.items,
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchGetUserwords: () => dispatch(getUserwords()),
+  dispatchGetUserwords: () => dispatch(getUserwordsRequest()),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LearningPage));
