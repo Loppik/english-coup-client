@@ -35,7 +35,7 @@ class AddWordsPage extends React.Component {
       custom = true;
     }
     if (originalWord !== '' && translationWord !== '') {
-      axios.post(`${API_URL}/word`, {original: originalWord, translation: translationWord, custom})
+      axios.post(`${API_URL}/userword`, { user_id: 2, word: {original: originalWord, translation: translationWord, custom}})
       .then((response) => {
         if (response.status === 200) {
           this.setState({ originalWord: '', translationWord: '', primaryTranslationWord: '' });

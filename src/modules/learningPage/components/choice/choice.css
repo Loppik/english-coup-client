@@ -1,0 +1,21 @@
+:local .content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+:local .option {
+  width: 30%;
+  padding: 5px;
+  text-align: center;
+  border: 2px solid black;
+  margin-top: 20px;
+}
+
+:local .option:hover {
+  color: white;
+  background-color: black;
+}
