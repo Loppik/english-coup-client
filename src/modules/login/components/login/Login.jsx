@@ -1,25 +1,41 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 
+import Input from '../../../../components/input/Input';
+import { emailValidation, passwordValidation } from '../../../../validations/loginForm';
 import styles from './login.css';
 
 class Login extends React.Component {
   render() {
+    const { handleSubmit } = this.props;
     return (
       <div className={styles.content}>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>
-            <input type="text" required />
-            <div className={styles.labelText}>e-mail</div>
+            <Field
+              name="email"
+              component={Input}
+              type="text"
+              validate={[emailValidation]}
+            />
           </label>
           <label>
-            <input type="password" required />
-            <div className={styles.labelText}>password</div>
+            <Field
+              name="password"
+              component={Input}
+              type="password"
+              validate={[passwordValidation]}
+            />
           </label>
-          <button className={styles.authBtn}>Submit</button>
+          <button type="submit" className={styles.authBtn}>Submit</button>
         </form>
       </div>
     )
   }
 }
+
+Login = reduxForm({
+  form: 'login',
+})(Login);
 
 export default Login;
