@@ -1,3 +1,4 @@
+import { handleActions } from 'redux-actions';
 import * as actionTypes from '../actions/actionTypes';
 
 const INITIAL_STATE = {
@@ -24,15 +25,8 @@ const getUserwordsFailure = (state, action) => ({
   isError: action.err,
 });
 
-export default (state = INITIAL_STATE, action) => {
-  switch(action.type) {
-    case actionTypes.GET_USERWORDS_REQUEST: 
-      return getUserwordsRequest(state);
-    case actionTypes.GET_USERWORDS_SUCCESS:
-      return getUserwordsSuccess(state, action);
-    case actionTypes.GET_USERWORDS_FAILURE:
-      return getUserwordsFailure(state, action);
-    default:
-      return state;
-  }
-}
+export default handleActions({
+  [actionTypes.GET_USERWORDS_REQUEST]: getUserwordsRequest,
+  [actionTypes.GET_USERWORDS_SUCCESS]: getUserwordsSuccess,
+  [actionTypes.GET_USERWORDS_FAILURE]: getUserwordsFailure,
+}, INITIAL_STATE);
