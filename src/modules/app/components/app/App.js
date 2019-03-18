@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
-import Login from '../../../login/components/login/Login';
+import Login from '../../../login/containers/Login';
 import Registration from '../../../registration/components/registration/Registration';
 import AddWordsPage from '../../../addWordsPage/components/addWordsPage/AddWordsPage';
 import LearningPage from '../../../learningPage/containers/LearningPage';
@@ -9,6 +9,11 @@ import MainPage from '../../../mainPage/components/mainPage/MainPage';
 
 
 class App extends Component {
+  componentDidMount() {
+    const { dispatchGetUserData } = this.props;
+    dispatchGetUserData();
+  }
+
   render() {
     return (
       <React.Fragment>

@@ -6,16 +6,16 @@
 
 :local .leftSide, :local .rightSide {
   width: 50%;
-  height: 100vh;
+  height: 92vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 :local .leftSide {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.13);
 }
 
 :local .rightSide {
-  background-color: green;
+  background-color: rgba(0, 128, 0, 0.116);
 }

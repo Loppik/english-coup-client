@@ -6,11 +6,16 @@ import { emailValidation, passwordValidation } from '../../../../validations/log
 import styles from './login.css';
 
 class Login extends React.Component {
+  handleSubmit = values => {
+    const { dispatchLoginUser, history } = this.props;
+    dispatchLoginUser(values, history);
+  }
+
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, isError } = this.props;
     return (
       <div className={styles.content}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(this.handleSubmit)}>
           <label>
             <Field
               name="email"
@@ -27,6 +32,7 @@ class Login extends React.Component {
               validate={[passwordValidation]}
             />
           </label>
+          <p style={{color: 'red'}}>{isError}</p>
           <button type="submit" className={styles.authBtn}>Submit</button>
         </form>
       </div>
