@@ -26,7 +26,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar />
+        <Navbar onExit={this.onExit} />
         <div className={styles.content}>
           <div className={styles.leftSide} onClick={this.onAddClick}>
             <h1>Add</h1>

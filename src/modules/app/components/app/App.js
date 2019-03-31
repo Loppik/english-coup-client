@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 import Login from '../../../login/containers/Login';
-import Registration from '../../../registration/components/registration/Registration';
+import Registration from '../../../registration/containers/Registration';
 import AddWordsPage from '../../../addWordsPage/components/addWordsPage/AddWordsPage';
 import LearningPage from '../../../learningPage/containers/LearningPage';
-import MainPage from '../../../mainPage/components/mainPage/MainPage';
+import MainPage from '../../../mainPage/containers/MainPage';
 
 
 class App extends Component {

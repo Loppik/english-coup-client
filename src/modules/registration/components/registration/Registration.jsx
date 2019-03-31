@@ -1,29 +1,60 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+
+import Input from '../../../../components/input/Input';
+import axios from '../../../../axios';
 
 import styles from './registration.css';
 
 class Registration extends React.Component {
+  handleSubmit = values => {
+    axios.post('signup', values)
+      .then((response) => {
+        if (response.status === 200) {
+          const { history } = this.props;
+          history.push('/login');
+        }
+      })
+      .catch((err) => {
+
+      })
+  }
+
   render() {
+    const { handleSubmit } = this.props;
     return (
       <div className={styles.content}>
-        <form>
+        <form onSubmit={handleSubmit(this.handleSubmit)}>
           <label>
-            <input type="text" required />
-            <div className={styles.labelText}>e-mail</div>
+            <Field
+              name="email"
+              component={Input}
+              type="text"
+            />
           </label>
           <label>
-            <input type="password" required />
-            <div className={styles.labelText}>password</div>
+            <Field
+              name="password"
+              component={Input}
+              type="password"
+            />
           </label>
           <label>
-            <input type="password" required />
-            <div className={styles.labelText}>password</div>
+            <Field
+              name="confirmPassword"
+              component={Input}
+              type="password"
+            />
           </label>
-          <button className={styles.authBtn}>Submit</button>
+          <button type="submit" className={styles.authBtn}>Submit</button>
         </form>
       </div>
     )
   }
 }
+
+Registration = reduxForm({
+  form: 'reg',
+})(Registration);
 
 export default Registration;

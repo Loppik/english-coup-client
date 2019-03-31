@@ -25,14 +25,15 @@ class Navbar extends Component {
   }
 
   onExit = () => {
-    localStorage.removeItem('tokens');
-    this.props.onSignOut();
+    localStorage.removeItem('token');
+    const { history } = this.props;
+    history.push('/login');
+    console.log('exit')
   }
 
 
   render() {
     const { userData } = this.props;
-    console.log(userData);
     return (
       <div className={styles.navBar}>
         <div className={styles.menu}>
@@ -54,10 +55,9 @@ class Navbar extends Component {
           )
           }
           {userData && (
-            <div>
-              <Link to="/">
-                <div className={styles.btn} onClick={this.onExit}>Exit</div>
-              </Link>
+            <div style={{display: 'flex'}}>
+              <p style={{marginRight: 20, marginTop: 20}}>{ userData.email }</p>
+              <div className={styles.btn} onClick={this.onExit}>Exit</div>
             </div>
           )
           }

@@ -21,7 +21,6 @@ class Login extends React.Component {
               name="email"
               component={Input}
               type="text"
-              validate={[emailValidation]}
             />
           </label>
           <label>
@@ -29,7 +28,6 @@ class Login extends React.Component {
               name="password"
               component={Input}
               type="password"
-              validate={[passwordValidation]}
             />
           </label>
           <p style={{color: 'red'}}>{isError}</p>
