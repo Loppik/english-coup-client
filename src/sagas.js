@@ -1,8 +1,8 @@
 import { all } from 'redux-saga/effects';
-import { getUserwordsWatcher } from './modules/learningPage/sagas';
+import { loadDataWatcher } from './dataLoader/sagas';
 
 export default function* rootSaga() {
   yield all([
-    getUserwordsWatcher(),
+    loadDataWatcher(),
   ])
 }

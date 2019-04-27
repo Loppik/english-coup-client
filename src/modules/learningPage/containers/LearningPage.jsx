@@ -1,15 +1,19 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import LearningPage from '../components/learningPage/LearningPage';
-import { getUserwordsRequest } from '../actions/learningPage';
+import * as Resource from '../../../dataLoader/resources';
+import { loadDataRequest } from '../../../dataLoader/actions';
 
 const mapStateToProps = state => ({
-  learningWords: state.learningWords.items,
-  isLoading: state.learningWords.isLoading,
+  learningWords: state.data.learningWords.data,
+  isLoading: state.data.learningWords.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchGetUserwords: () => dispatch(getUserwordsRequest()),
+  dispatchGetUserwords: () => dispatch(loadDataRequest({
+    resource: Resource.LearningWords,
+    url: '/userwords' 
+  })),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LearningPage));

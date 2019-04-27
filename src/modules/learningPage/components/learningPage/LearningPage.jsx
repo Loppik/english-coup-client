@@ -14,7 +14,7 @@ class LearningPage extends React.Component {
   componentDidMount() {
     const { dispatchGetUserwords } = this.props;
     dispatchGetUserwords();
-    this.setState({ studyModes: ['typing', 'choice translation-original', 'choice original-translation', 'viewing'] });
+    this.setState({ studyModes: ['viewing', 'choice original-translation', 'choice translation-original', 'typing'] });
   }
 
   onCompleteMode = () => {
