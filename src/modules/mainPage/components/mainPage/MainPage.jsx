@@ -1,16 +1,18 @@
 import React from 'react';
+import { Row, Col } from 'antd';
 
-import Navbar from '../../../navbar/containers/Navbar';
-
-import styles from './mainPage.css';
+import Header from '../../../header/Header';
+import RightMenu from '../../../rightMenu/RightMenu';
 
 class MainPage extends React.Component {
   componentDidMount() {
+    /*
     const token = window.localStorage.getItem('token');
     if (!token) {
       const { history } = this.props;
       history.push('/login');
     }
+    */
   }
 
   onAddClick = () => {
@@ -26,15 +28,15 @@ class MainPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar onExit={this.onExit} />
-        <div className={styles.content}>
-          <div className={styles.leftSide} onClick={this.onAddClick}>
-            <h1>Add</h1>
-          </div>
-          <div className={styles.rightSide} onClick={this.onLearningClick}>
-            <h1>Learning</h1>
-          </div>
-        </div>
+        <Header />
+        <Row>
+          <Col sm={3}>
+            <RightMenu />
+          </Col>
+          <Col sm={21}>
+            
+          </Col>
+        </Row>
       </React.Fragment>
     )
   }

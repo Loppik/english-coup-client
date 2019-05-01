@@ -3,8 +3,6 @@ import React from 'react';
 import arrowLeft from '../../../../icons/arrow_left.svg';
 import arrowRight from '../../../../icons/arrow_right.svg';
 
-import styles from './viewing.css';
-
 class Viewing extends React.Component {
   state = {
     words: [],
@@ -54,27 +52,27 @@ class Viewing extends React.Component {
     const isAllWordsWatched = this.isAllWordsWatched();
 
     return (
-      <div className={styles.content}>
-        <div className={styles.cardAndSwitch}>
-          <div className={styles.switch} onClick={this.swipeLeft}>
+      <div >
+        <div >
+          <div  onClick={this.swipeLeft}>
             <img src={arrowLeft} alt=""></img>
           </div>
-          <div className={styles.flipCard}>
-            <div className={styles.flipCardInner}>
-              <div className={styles.flipCardFront}>
+          <div >
+            <div >
+              <div >
                 <p>{ nowWord.original }</p>
               </div>
-              <div className={styles.flipCardBack}>
+              <div >
                 <p>{ nowWord.translation }</p>
               </div>
             </div>
           </div>
-          <div className={styles.switch} onClick={this.swipeRight}>
+          <div  onClick={this.swipeRight}>
             <img src={arrowRight} alt=""></img>
           </div>
         </div>
         {isAllWordsWatched && 
-          <div className={styles.remembered} onClick={onComplete}>
+          <div  onClick={onComplete}>
             <h4>Remembered</h4>
           </div>
         }

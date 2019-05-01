@@ -1,7 +1,5 @@
 import React from 'react';
 
-import styles from './typing.css';
-
 class Typing extends React.Component {
   state = {
     words: [],
@@ -36,7 +34,7 @@ class Typing extends React.Component {
     const word = words[nowWordIndex]
     console.log(word)
     return (
-      <div className={styles.content}>
+      <div>
         <h3>{word.translation}</h3>
         <input type="text" onChange={this.onInput} />
       </div>

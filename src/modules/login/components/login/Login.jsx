@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 
 import Input from '../../../../components/input/Input';
 import { emailValidation, passwordValidation } from '../../../../validations/loginForm';
-import styles from './login.css';
+
 
 class Login extends React.Component {
   handleSubmit = values => {
@@ -14,7 +14,7 @@ class Login extends React.Component {
   render() {
     const { handleSubmit, isError } = this.props;
     return (
-      <div className={styles.content}>
+      <div >
         <form onSubmit={handleSubmit(this.handleSubmit)}>
           <label>
             <Field
@@ -31,7 +31,7 @@ class Login extends React.Component {
             />
           </label>
           <p style={{color: 'red'}}>{isError}</p>
-          <button type="submit" className={styles.authBtn}>Submit</button>
+          <button type="submit" >Submit</button>
         </form>
       </div>
     )

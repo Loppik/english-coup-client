@@ -4,8 +4,6 @@ import { Field, reduxForm } from 'redux-form';
 import Input from '../../../../components/input/Input';
 import axios from '../../../../axios';
 
-import styles from './registration.css';
-
 class Registration extends React.Component {
   handleSubmit = values => {
     axios.post('signup', values)
@@ -23,7 +21,7 @@ class Registration extends React.Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className={styles.content}>
+      <div >
         <form onSubmit={handleSubmit(this.handleSubmit)}>
           <label>
             <Field
@@ -46,7 +44,7 @@ class Registration extends React.Component {
               type="password"
             />
           </label>
-          <button type="submit" className={styles.authBtn}>Submit</button>
+          <button type="submit" >Submit</button>
         </form>
       </div>
     )

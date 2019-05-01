@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../../configs/config';
- 
-import styles from './addWordsPage.css'
 
 class AddWordsPage extends React.Component {
   state = {
@@ -52,7 +50,7 @@ class AddWordsPage extends React.Component {
   render() {
     const { originalWord, translationWord } = this.state;
     return (
-      <div className={styles.addWordsContent}>
+      <div>
         <input value={originalWord} onChange={this.onOriginalWordChange} />
         <input value={translationWord} onChange={this.onTranslationWordChange} />
         <button onClick={this.onTranslateButtonClick}>Translate</button>

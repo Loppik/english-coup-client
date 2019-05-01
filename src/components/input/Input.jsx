@@ -1,7 +1,5 @@
 import React from 'react';
 
-import styles from './input.css';
-
 const Input = (props) => {
   const { input, type, meta } = props;
   return (
@@ -15,10 +13,10 @@ const Input = (props) => {
       }
       
       {meta.error && meta.touched &&
-        <input {...input} type={type} className={styles.redLine} title={meta.error}/>
+        <input {...input} type={type} title={meta.error}/>
       }
 
-      <div className={styles.labelText}>{ input.name }</div>
+      <div>{ input.name }</div>
     </React.Fragment>
   )
 }
