@@ -14,7 +14,7 @@ const INITIAL_STATE = () => {
   return initState;
 }
 
-const loadDataRequest = (state, action) => {
+const callApi = (state, action) => {
   const path = action.payload.resource;
   return ({
     ...state,
@@ -24,7 +24,7 @@ const loadDataRequest = (state, action) => {
   });
 }
 
-const loadDataSuccess = (state, action) => {
+const callApiSuccess = (state, action) => {
   const path = action.payload.resource;
   return ({
     ...state,
@@ -36,7 +36,7 @@ const loadDataSuccess = (state, action) => {
   });
 }
 
-const loadDataFailure = (state, action) => {
+const callApiFailure = (state, action) => {
   const path = action.payload.resource;
   return ({
     ...state,
@@ -48,7 +48,7 @@ const loadDataFailure = (state, action) => {
 }
 
 export default handleActions({
-  [actions.loadDataRequest]: loadDataRequest,
-  [actions.loadDataSuccess]: loadDataSuccess,
-  [actions.loadDataFail]: loadDataFailure,
+  [actions.callApi]: callApi,
+  [actions.callApiSuccess]: callApiSuccess,
+  [actions.callApiFail]: callApiFailure,
 }, INITIAL_STATE);

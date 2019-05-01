@@ -1,5 +1,5 @@
 const reduxActions = require('redux-actions');
 
-exports.loadDataRequest = reduxActions.createAction('LOAD_DATA_REQUEST');
-exports.loadDataSuccess = reduxActions.createAction('LOAD_DATA_SUCCESS');
-exports.loadDataFailure = reduxActions.createAction('LOAD_DATA_FAILURE');
+exports.callApi = reduxActions.createAction('CALL_API');
+exports.callApiSuccess = reduxActions.createAction('CALL_API_SUCCESS');
+exports.callApiFailure = reduxActions.createAction('CALL_API_FAILURE');

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import LearningPage from '../components/learningPage/LearningPage';
 import * as Resource from '../../../dataLoader/resources';
-import { loadDataRequest } from '../../../dataLoader/actions';
+import { callApi } from '../../../dataLoader/actions';
 
 const mapStateToProps = state => ({
   learningWords: state.data.learningWords.data,
@@ -10,9 +10,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchGetUserwords: () => dispatch(loadDataRequest({
+  dispatchGetUserwords: () => dispatch(callApi({
     resource: Resource.LearningWords,
-    url: '/userwords' 
+    type: 'get',
+    url: '/userwords'
   })),
 })
 
