@@ -6,20 +6,14 @@ import axios from '../../../../axios';
 
 class Registration extends React.Component {
   handleSubmit = values => {
-    axios.post('signup', values)
-      .then((response) => {
-        if (response.status === 200) {
-          const { history } = this.props;
-          history.push('/login');
-        }
-      })
-      .catch((err) => {
-
-      })
+    delete values.confirmPassword;
+    this.props.dispatchSignUp(values, this.redirectMainPage);
   }
 
+  redirectSignInPage = () => this.props.history.push('/signin');
+
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, isError } = this.props;
     return (
       <div >
         <form onSubmit={handleSubmit(this.handleSubmit)}>
@@ -46,6 +40,7 @@ class Registration extends React.Component {
           </label>
           <button type="submit" >Submit</button>
         </form>
+        <p style={{color: 'red'}}>{isError}</p>
       </div>
     )
   }

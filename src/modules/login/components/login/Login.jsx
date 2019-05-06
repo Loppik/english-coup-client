@@ -2,13 +2,15 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 import Input from '../../../../components/input/Input';
-import { emailValidation, passwordValidation } from '../../../../validations/loginForm';
-
+import { setTokens } from '@/storages/tokenStorage';
 
 class Login extends React.Component {
-  handleSubmit = values => {
-    const { dispatchLoginUser, history } = this.props;
-    dispatchLoginUser(values, history);
+  handleSubmit = values => this.props.dispatchSignIn(values, this.onSuccessSignIn);
+
+  onSuccessSignIn = () => {
+    setTokens(this.props.tokens)
+    this.props.dispatchGetUserData();
+    this.props.history.push('/')
   }
 
   render() {

@@ -16,39 +16,47 @@ const INITIAL_STATE = () => {
 
 const callApi = (state, action) => {
   const path = action.payload.resource;
-  return ({
+  return {
     ...state,
     [path]: {
       isLoading: true,
     }
-  });
+  };
 }
 
 const callApiSuccess = (state, action) => {
   const path = action.payload.resource;
-  return ({
+  return {
     ...state,
     [path]: {
       data: action.payload.data,
       isLoading: false,
       isError: false,
     },
-  });
+  };
 }
 
-const callApiFailure = (state, action) => {
+const callApiFail = (state, action) => {
   const path = action.payload.resource;
   return ({
     ...state,
     [path]: {
-      isError: action.payload.err, 
+      isError: action.payload.err.msg, 
       isLoading: false,
     }
   });
 }
 
+const setTokens = (state, action) => ({
+  'userTokens': {
+    data: action.data,
+  }
+})
+
+
 export default handleActions({
   [actions.callApi]: callApi,
   [actions.callApiSuccess]: callApiSuccess,
-  [actions.callApiFail]: callApiFailure,
-}, INITIAL_STATE);
+  [actions.callApiFail]: callApiFail,
+  [actions.setTokens]: setTokens,
+}, INITIAL_STATE());

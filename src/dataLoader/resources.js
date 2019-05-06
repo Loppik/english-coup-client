@@ -1,1 +1,5 @@
-export const LearningWords = 'learningWords';
+module.exports = {
+  LearningWords: 'learningWords',
+  UserData: 'userData',
+  UserTokens: 'userTokens',
+}

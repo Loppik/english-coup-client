@@ -7,7 +7,7 @@ class RightMenu extends React.Component {
       <Menu mode="vertical" inlineCollapsed={true}>
         <Menu.Item key="1">
           <Icon type="appstore" />
-          <span>Learn</span>
+          <span>Main</span>
         </Menu.Item>
         <Menu.Item key="2">
           <Icon type="bulb" />

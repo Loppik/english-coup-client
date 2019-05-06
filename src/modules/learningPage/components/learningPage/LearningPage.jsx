@@ -14,16 +14,23 @@ class LearningPage extends React.Component {
   componentDidMount() {
     const { dispatchGetUserwords } = this.props;
     dispatchGetUserwords();
-    this.setState({ studyModes: ['viewing', 'choice original-translation', 'choice translation-original', 'typing'] });
+    this.setState({ studyModes: ['viewing'] }); // , 'choice original-translation', 'choice translation-original', 'typing'
   }
 
   onCompleteMode = () => {
     this.setState((prev) => ({ index: prev.index + 1 }));
   }
 
+  onFinishLearning = (words) => {
+    const { dispatchFinishLearning } = this.props;
+    dispatchFinishLearning(words);
+    console.log("+++");
+  }
+
   render() {
     const { studyModes, index, wordsCount } = this.state;
-    const { learningWords, isLoading } = this.props;
+    const { learningWords, isLoading, isError } = this.props;
+    if (isError) return <div>Bad situation (:</div>
     if (isLoading || learningWords === null || learningWords.length === 0) {
       return <div></div>
     }
@@ -43,12 +50,17 @@ class LearningPage extends React.Component {
         component = <Typing words={learningWords} count={wordsCount} onComplete={this.onCompleteMode} />
         break;
       default:
+        this.onFinishLearning(learningWords);
         component = <div>You are awesome</div>
         break;
     }
 
     return (
-      component 
+      <React.Fragment>
+        {!isLoading && !isError && (
+          component
+        )}
+      </React.Fragment>
     )
   }
 }

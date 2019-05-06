@@ -13,7 +13,7 @@ const requestType = (type) => {
 
 function* callApi(action) {
   try {
-    const response = yield call(requestType(action.payload.type), action.payload.url);
+    const response = yield call(requestType(action.payload.type), action.payload.url, action.payload.content);
     yield put(actions.callApiSuccess({data: response.data, resource: action.payload.resource}));
     if (action.payload.onSuccess) {
       yield put(action.payload.onSuccess);
@@ -22,7 +22,7 @@ function* callApi(action) {
       yield put(action.payload.onFail);
     }
   } catch (err) {
-    yield put(actions.callApiFailure({err, resource: action.payload.resource}));
+    yield put(actions.callApiFail({err: err.response.data, resource: action.payload.resource}));
   }
 }
 
