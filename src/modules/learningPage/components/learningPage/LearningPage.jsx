@@ -14,7 +14,7 @@ class LearningPage extends React.Component {
   componentDidMount() {
     const { dispatchGetUserwords } = this.props;
     dispatchGetUserwords();
-    this.setState({ studyModes: ['viewing'] }); // , 'choice original-translation', 'choice translation-original', 'typing'
+    this.setStudyModes(); 
   }
 
   onCompleteMode = () => {
@@ -22,14 +22,18 @@ class LearningPage extends React.Component {
   }
 
   onFinishLearning = (words) => {
-    const { dispatchFinishLearning } = this.props;
-    dispatchFinishLearning(words);
-    console.log("+++");
+    this.props.dispatchFinishLearning(words);
+    this.redirectToLearnPage();
   }
+
+  redirectToLearnPage = () => this.props.history.push('/learn');
+
+  setStudyModes = () => this.setState({ studyModes: ['viewing', 'choice original-translation', 'choice translation-original', 'typing'] }); 
 
   render() {
     const { studyModes, index, wordsCount } = this.state;
     const { learningWords, isLoading, isError } = this.props;
+
     if (isError) return <div>Bad situation (:</div>
     if (isLoading || learningWords === null || learningWords.length === 0) {
       return <div></div>
@@ -51,8 +55,7 @@ class LearningPage extends React.Component {
         break;
       default:
         this.onFinishLearning(learningWords);
-        component = <div>You are awesome</div>
-        break;
+        break; 
     }
 
     return (

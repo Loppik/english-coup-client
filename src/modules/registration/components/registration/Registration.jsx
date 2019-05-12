@@ -2,12 +2,11 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 import Input from '../../../../components/input/Input';
-import axios from '../../../../axios';
 
 class Registration extends React.Component {
   handleSubmit = values => {
     delete values.confirmPassword;
-    this.props.dispatchSignUp(values, this.redirectMainPage);
+    this.props.dispatchSignUp(values, this.redirectSignInPage);
   }
 
   redirectSignInPage = () => this.props.history.push('/signin');

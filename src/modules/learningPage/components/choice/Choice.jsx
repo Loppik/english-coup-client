@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './choice.css';
+
 class Choice extends React.Component {
   state = {
     words: [],
@@ -11,6 +13,10 @@ class Choice extends React.Component {
 
   componentDidMount() {
     this.setState({ words: this.props.words, count: this.props.count, onComplete: this.props.onComplete, isOriginalTranslation: this.props.isOriginalTranslation })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ words: nextProps.words, nowWordIndex: 0, count: nextProps.count, onComplete: nextProps.onComplete, isOriginalTranslation: nextProps.isOriginalTranslation })
   }
 
   getRandomInt = max => Math.floor(Math.random()*max);
@@ -63,9 +69,9 @@ class Choice extends React.Component {
     }
     const mainWord = words[nowWordIndex];
     return (
-      <div >
+      <div className={styles.content}>
         <h3>{ isOriginalTranslation ? mainWord.original : mainWord.translation }</h3>
-        { options.map((option) => <div  key={option.word_id} onClick={() => this.clickOnOption(option)}>{ isOriginalTranslation ? option.translation : option.original }</div>) }
+        { options.map((option) => <div className={styles.option} key={option.word_id} onClick={() => this.clickOnOption(option)}>{ isOriginalTranslation ? option.translation : option.original }</div>) }
       </div>
     )
   }

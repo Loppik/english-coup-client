@@ -4,7 +4,6 @@ import { API_URL } from './configs/config';
 
 const setAuthHeaderInterceptor = (config) => {
   const { data: { userTokens } } = store.getState(); // FIXME: deprecated getState
-  console.log(userTokens.data);
   if (userTokens.data) {
     config.headers.Authorization = userTokens.data.accessToken;
   } else {

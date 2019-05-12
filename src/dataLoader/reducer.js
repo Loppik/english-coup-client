@@ -19,7 +19,9 @@ const callApi = (state, action) => {
   return {
     ...state,
     [path]: {
+      data: [],
       isLoading: true,
+      isError: false,
     }
   };
 }
@@ -41,6 +43,7 @@ const callApiFail = (state, action) => {
   return ({
     ...state,
     [path]: {
+      data: [],
       isError: action.payload.err.msg, 
       isLoading: false,
     }
@@ -48,8 +51,9 @@ const callApiFail = (state, action) => {
 }
 
 const setTokens = (state, action) => ({
+  ...state,
   'userTokens': {
-    data: action.data,
+    data: action.payload,
   }
 })
 

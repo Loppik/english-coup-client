@@ -33,28 +33,22 @@ class AddWordsPage extends React.Component {
       custom = true;
     }
     if (originalWord !== '' && translationWord !== '') {
-      axios.post(`${API_URL}/userwords`, { user_id: 2, word: {original: originalWord, translation: translationWord, custom}})
-      .then((response) => {
-        if (response.status === 200) {
-          this.setState({ originalWord: '', translationWord: '', primaryTranslationWord: '' });
-        }
-      })
-      .catch((err) => {
-        // FIXME: error handler
-      })
+      this.props.dispatchAddUserword({ word: {original: originalWord, translation: translationWord, custom}}, this.onSuccessAddUserword);
     } else {
       // FIXME: info user
     }
   }
 
+  onSuccessAddUserword = () => this.setState({ originalWord: '', translationWord: '', primaryTranslationWord: '' });
+
   render() {
     const { originalWord, translationWord } = this.state;
     return (
-      <div>
+      <div style={{marginTop: '50px'}}>
         <input value={originalWord} onChange={this.onOriginalWordChange} />
         <input value={translationWord} onChange={this.onTranslationWordChange} />
-        <button onClick={this.onTranslateButtonClick}>Translate</button>
-        <button onClick={this.onAddButtonClick}>Add</button>
+        <button onClick={this.onTranslateButtonClick}>Перевести</button>
+        <button onClick={this.onAddButtonClick}>Добавить</button>
       </div>
     )
   }

@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import { getTokens } from '../../../../storages/tokenStorage';
 
 import Login from '../../../login/containers/Login';
 import Registration from '../../../registration/containers/Registration';
-import AddWordsPage from '../../../addWordsPage/components/addWordsPage/AddWordsPage';
+import AddWordsPage from '../../../addWordsPage/containers/AddWordsPage';
+import ContentPage from '../../../contentPage/containers/ContentPage';
+import PrivateRoute from '../privateRoute/PrivateRoute';
 import LearningPage from '../../../learningPage/containers/LearningPage';
-import MainPage from '../../../mainPage/containers/MainPage';
+import Repeat from '../../../repeat/Repeat';
+
 
 
 class App extends Component {
   componentDidMount() {
     const { dispatchGetUserData, dispatchSetTokens, history } = this.props;
     const tokens = getTokens();
-    console.log(tokens);
     if (tokens) {
       dispatchSetTokens(tokens);
       dispatchGetUserData(this.props.history);
@@ -30,21 +32,23 @@ class App extends Component {
         dispatch(loginUserSuccess(token, {email: 'a'}));
       });
       */
-    } else {
-      history.push('/signin');
     }
+  }
+
+  onFailGetUserData = () => {
+
   }
 
   render() {
     return (
-      <React.Fragment>
-        <Route exact path="/signin" component={Login} />
-        <Route exact path="/signup" component={Registration} />
-        <Route exact path="/add" component={AddWordsPage} />
-        <Route exact path="/learning" component={LearningPage} />
-        <Route exact path="/" component={MainPage} />
-      </React.Fragment>
-    );
+      <Switch>
+        <Route path="/signin" component={Login} />
+        <Route path="/signup" component={Registration} />
+        <PrivateRoute path="/learning" component={LearningPage} />
+        <PrivateRoute path="/repeating" component={Repeat} />
+        <PrivateRoute path="/" component={ContentPage} />
+      </Switch>
+    )
   }
 }
 

@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import store from './store';
 import { Provider } from 'react-redux';
 
+import Cookie from 'js-cookie';
 import english from './locales/english.json';
 import russian from './locales/russian.json';
 
@@ -15,13 +16,11 @@ const locale = Cookie.get('locale') || (Cookie.set('locale', 'en-US') && 'en-US'
 const messages = locale === 'ru-RU' ? russian : english;
 
 ReactDOM.render(
-  <IntlProvider messages={messages}>
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </Provider>
-  </IntlProvider>, 
+    </Provider>,
   document.getElementById('root')
 );
 
