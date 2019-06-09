@@ -5,4 +5,5 @@ module.exports = {
   UserTokens: 'userTokens',
   AddUserword: 'addUserword',
   CountAllLearningWords: 'countAllLearningWords',
+  CountAllLearnedWords: 'countAllLearnedWords', 
 }
