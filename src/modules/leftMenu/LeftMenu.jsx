@@ -10,27 +10,27 @@ class LeftMenu extends React.Component {
       <Menu mode="vertical" inlineCollapsed={true}>
         <Menu.Item key="1" onClick={() => this.redirectTo('/')}>
           <Icon type="appstore" />
-          <span>Main</span>
+          <span>Основная</span>
         </Menu.Item>
         <Menu.Item key="2" onClick={() => this.redirectTo('/add')}>
           <Icon type="plus-square" />
-          <span>Add</span>
+          <span>Добавить</span>
         </Menu.Item>
         <Menu.Item key="3" onClick={() => this.redirectTo('/learn')}>
           <Icon type="bulb" />
-          <span>Learn</span>
+          <span>Изучить</span>
         </Menu.Item>
         <Menu.Item key="4" onClick={() => this.redirectTo('/repeat')}>
           <Icon type="interation" />
-          <span>Repeat</span>
+          <span>Повторить</span>
         </Menu.Item>
         <Menu.Item key="5">
           <Icon type="line-chart" />
-          <span>Graphics</span>
+          <span>Графики</span>
         </Menu.Item>
         <Menu.Item key="6">
           <Icon type="setting" />
-          <span>Settings</span>
+          <span>Настройки</span>
         </Menu.Item>
       </Menu>
     )

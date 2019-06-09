@@ -23,10 +23,10 @@ class LearningPage extends React.Component {
 
   onFinishLearning = (words) => {
     this.props.dispatchFinishLearning(words);
-    this.redirectToLearnPage();
+    this.redirectToMainPage();
   }
 
-  redirectToLearnPage = () => this.props.history.push('/learn');
+  redirectToMainPage = () => this.props.history.push('/');
 
   setStudyModes = () => this.setState({ studyModes: ['viewing', 'choice original-translation', 'choice translation-original', 'typing'] }); 
 

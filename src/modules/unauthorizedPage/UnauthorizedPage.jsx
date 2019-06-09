@@ -1,16 +1,21 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Row, Button } from 'antd';
 
 class UnauthorizedPage extends React.Component {
   redirectTo = path => this.props.history.push(path);
 
   render() {
     return (
-      <div>
-        <h1>Have fun!</h1>
-        <button onClick={() => this.redirectTo('signin')}>Sign in</button>
-        <button onClick={() => this.redirectTo('signup')}>Sign up</button>
-      </div>
+      <Row style={{paddingTop: '40vh'}}>
+        <Row style={{display: 'flex', justifyContent: 'center'}}>
+          <h1>English_coup / необходима авторизация</h1>
+        </Row>
+        <Row style={{display: 'flex', justifyContent: 'center'}}>
+          <Button onClick={() => this.redirectTo('signin')}>Логин</Button>
+          <Button onClick={() => this.redirectTo('signup')} style={{marginLeft: '10px'}}>Регистрация</Button>
+        </Row>
+      </Row>
     )
   }
 }
