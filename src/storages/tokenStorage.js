@@ -1,2 +1,3 @@
-export const getTokens = () => JSON.parse(localStorage.getItem('tokens'));
-export const setTokens = tokens => localStorage.setItem('tokens', JSON.stringify(tokens));
+exports.getTokens = () => JSON.parse(localStorage.getItem('tokens'));
+exports.setTokens = tokens => localStorage.setItem('tokens', JSON.stringify(tokens));
+exports.removeTokens = () => localStorage.removeItem('tokens');
