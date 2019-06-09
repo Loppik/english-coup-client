@@ -4,6 +4,8 @@ import { Field, reduxForm } from 'redux-form';
 import Input from '../../../../components/input/Input';
 import { setTokens } from '@/storages/tokenStorage';
 
+import styles from './login.css';
+
 class Login extends React.Component {
   handleSubmit = values => this.props.dispatchSignIn(values, this.onSuccessSignIn);
 
@@ -16,7 +18,7 @@ class Login extends React.Component {
   render() {
     const { handleSubmit, isError } = this.props;
     return (
-      <div >
+      <div className={styles.content}>
         <form onSubmit={handleSubmit(this.handleSubmit)}>
           <label>
             <Field
@@ -33,7 +35,7 @@ class Login extends React.Component {
             />
           </label>
           <p style={{color: 'red'}}>{isError}</p>
-          <button type="submit" >Submit</button>
+          <button type="submit" className={styles.authBtn}>Войти</button>
         </form>
       </div>
     )

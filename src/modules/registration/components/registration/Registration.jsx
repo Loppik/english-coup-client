@@ -3,6 +3,8 @@ import { Field, reduxForm } from 'redux-form';
 
 import Input from '../../../../components/input/Input';
 
+import styles from './registration.css';
+
 class Registration extends React.Component {
   handleSubmit = values => {
     delete values.confirmPassword;
@@ -14,7 +16,7 @@ class Registration extends React.Component {
   render() {
     const { handleSubmit, isError } = this.props;
     return (
-      <div >
+      <div className={styles.content}>
         <form onSubmit={handleSubmit(this.handleSubmit)}>
           <label>
             <Field
@@ -32,14 +34,13 @@ class Registration extends React.Component {
           </label>
           <label>
             <Field
-              name="confirmPassword"
+              name="confirm"
               component={Input}
               type="password"
             />
           </label>
-          <button type="submit" >Submit</button>
+          <button type="submit" className={styles.authBtn}>Регистрация</button>
         </form>
-        <p style={{color: 'red'}}>{isError}</p>
       </div>
     )
   }
