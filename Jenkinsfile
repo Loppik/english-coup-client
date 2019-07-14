@@ -16,7 +16,7 @@ pipeline {
       steps {
         echo "============= dependencies ============="
         sh '''
-          ssh root@192.168.1.8 "npm i"
+          ssh root@192.168.1.8 "cd /home/katrin/Projects/english-coup-client && npm i"
         '''
       }
     }
@@ -24,7 +24,7 @@ pipeline {
       steps {
         echo "============= build ============="
         sh '''
-          ssh root@192.168.1.8 "npm run-script build"
+          ssh root@192.168.1.8 "cd /home/katrin/Projects/english-coup-client && npm run-script build"
         '''
       }
     }
