@@ -1,12 +1,12 @@
   
 FROM alpine:latest
 
-COPY .
+COPY . .
 
-RUN apt-get install node
-RUN apt-get install npm
+RUN apk add nodejs
+RUN apk add npm
 RUN npm i
 
-EXPOSE 80
+EXPOSE 3005
 
 CMD ["npm", "start"]
