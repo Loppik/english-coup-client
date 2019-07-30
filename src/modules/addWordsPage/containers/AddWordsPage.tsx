@@ -3,8 +3,8 @@ import * as Resource from '@/dataLoader/resources';
 import { callApi } from '@/dataLoader/actions';
 import AddWordsPage from '../components/addWordsPage/AddWordsPage';
 
-const mapDispatchToProps = dispatch => ({
-  dispatchAddUserword: (userword, onSuccess) => dispatch(callApi({
+const mapDispatchToProps = (dispatch: any) => ({
+  dispatchAddUserword: (userword: any, onSuccess: any) => dispatch(callApi({
     resource: Resource.AddUserword,
     type: 'post',
     url: '/userwords',

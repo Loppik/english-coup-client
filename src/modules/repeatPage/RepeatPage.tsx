@@ -5,7 +5,14 @@ import * as Resource from '@/dataLoader/resources';
 import { callApi } from '@/dataLoader/actions';
 import { Row, Col, Button } from 'antd';
 
-class RepeatPage extends React.Component {
+interface IOwnProps {
+  dispatchGetCountAllLearnedWords: any;
+  countIsLoading: any;
+  countAllLearnedWords: any;
+  history: any;
+}
+
+class RepeatPage extends React.Component<IOwnProps> {
   componentDidMount() {
     this.props.dispatchGetCountAllLearnedWords();
   }

@@ -6,7 +6,16 @@ import { setTokens } from '@/storages/tokenStorage';
 
 import styles from './login.css';
 
-class Login extends React.Component {
+interface IOwnProps {
+  dispatchSignIn: any;
+  dispatchGetUserData: any;
+  history: any;
+  handleSubmit: any;
+  tokens: any;
+  isError: any;
+}
+
+class Login extends React.Component<IOwnProps> {
   handleSubmit = values => this.props.dispatchSignIn(values, this.onSuccessSignIn);
 
   onSuccessSignIn = () => {
@@ -42,8 +51,8 @@ class Login extends React.Component {
   }
 }
 
-Login = reduxForm({
+const LoginReduxForm = reduxForm({
   form: 'login',
 })(Login);
 
-export default Login;
+export default LoginReduxForm;

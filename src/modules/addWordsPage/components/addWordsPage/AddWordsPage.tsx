@@ -2,18 +2,23 @@ import React from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../../configs/config';
 
-class AddWordsPage extends React.Component {
+
+interface IOwnProps {
+  dispatchAddUserword: any;
+}
+
+class AddWordsPage extends React.Component<IOwnProps> {
   state = {
     originalWord: '',
     translationWord: '',
     primaryTranslationWord: '',
   }
 
-  onOriginalWordChange = (event) => {
+  onOriginalWordChange = (event: any) => {
     this.setState({ originalWord: event.target.value });
   }
 
-  onTranslationWordChange = (event) => {
+  onTranslationWordChange = (event: any) => {
     this.setState({ translationWord: event.target.value });
   }
 

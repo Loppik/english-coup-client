@@ -5,7 +5,14 @@ import Input from '../../../../components/input/Input';
 
 import styles from './registration.css';
 
-class Registration extends React.Component {
+interface IOwnProp {
+  dispatchSignUp: any;
+  handleSubmit: any;
+  isError: any;
+  history: any;
+}
+
+class Registration extends React.Component<IOwnProp> {
   handleSubmit = values => {
     delete values.confirmPassword;
     this.props.dispatchSignUp(values, this.redirectSignInPage);
@@ -46,8 +53,8 @@ class Registration extends React.Component {
   }
 }
 
-Registration = reduxForm({
+const RegistrationReduxForm = reduxForm({
   form: 'reg',
 })(Registration);
 
-export default Registration;
+export default RegistrationReduxForm;

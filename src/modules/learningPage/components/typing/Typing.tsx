@@ -2,8 +2,21 @@ import React from 'react';
 
 import styles from './typing.css';
 
-class Typing extends React.Component {
-  state = {
+interface IOwnProps {
+  words: any;
+  count: any;
+  onComplete: any;
+}
+
+interface IState {
+  words: any;
+  count: any;
+  onComplete: any;
+  nowWordIndex: number;
+}
+
+class Typing extends React.Component<IOwnProps> {
+  state: IState = {
     words: [],
     nowWordIndex: 0,
     count: null,
@@ -18,7 +31,7 @@ class Typing extends React.Component {
     const { words, nowWordIndex } = this.state;
     if (words[nowWordIndex].original === event.target.value) {
       event.target.value = '';
-      this.setState((prev) => ({ nowWordIndex: prev.nowWordIndex + 1 }));
+      this.setState((prev: any) => ({ nowWordIndex: prev.nowWordIndex + 1 }));
     }
   }
 

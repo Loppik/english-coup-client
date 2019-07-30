@@ -2,8 +2,23 @@ import React from 'react';
 
 import styles from './choice.css';
 
-class Choice extends React.Component {
-  state = {
+interface IOwnProps {
+  words: any;
+  count: any;
+  onComplete: any;
+  isOriginalTranslation: any;
+}
+
+interface IState {
+  words: Array<any>;
+  nowWordIndex: any;
+  count: any;
+  onComplete: any;
+  isOriginalTranslation: any;
+}
+
+class Choice extends React.Component<IOwnProps, IState> {
+  state: IState = {
     words: [],
     nowWordIndex: 0,
     count: null,
@@ -12,11 +27,22 @@ class Choice extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ words: this.props.words, count: this.props.count, onComplete: this.props.onComplete, isOriginalTranslation: this.props.isOriginalTranslation })
+    this.setState({
+      words: this.props.words,
+      count: this.props.count,
+      onComplete: this.props.onComplete,
+      isOriginalTranslation: this.props.isOriginalTranslation
+    });
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ words: nextProps.words, nowWordIndex: 0, count: nextProps.count, onComplete: nextProps.onComplete, isOriginalTranslation: nextProps.isOriginalTranslation })
+    this.setState({
+      words: nextProps.words,
+      nowWordIndex: 0,
+      count: nextProps.count,
+      onComplete: nextProps.onComplete,
+      isOriginalTranslation: nextProps.isOriginalTranslation
+    });
   }
 
   getRandomInt = max => Math.floor(Math.random()*max);
@@ -51,7 +77,7 @@ class Choice extends React.Component {
   clickOnOption = option => {
     const { words, nowWordIndex } = this.state;
     if (option.word_id === words[nowWordIndex].word_id) {
-      this.setState((prev) => ({ nowWordIndex: prev.nowWordIndex + 1 }));
+      this.setState((prev: any) => ({ nowWordIndex: prev.nowWordIndex + 1 }));
     } else {
       alert('Увы и ах, но данный ответ неверный')
     }

@@ -3,7 +3,9 @@ import { withRouter } from 'react-router-dom';
 import { Row, Button } from 'antd';
 
 class UnauthorizedPage extends React.Component {
-  redirectTo = path => this.props.history.push(path);
+  redirectTo = path => {
+    // this.props.history.push(path); FIXME:
+  }
 
   render() {
     return (
@@ -20,4 +22,4 @@ class UnauthorizedPage extends React.Component {
   }
 }
 
-export default withRouter(UnauthorizedPage);
+export default UnauthorizedPage;

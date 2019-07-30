@@ -3,7 +3,9 @@ import { withRouter } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 
 class LeftMenu extends React.Component {
-  redirectTo = path => this.props.history.push(path);
+  redirectTo = path => {
+    // this.props.history.push(path); // FIXME: 
+  }
 
   render() {
     return (
@@ -37,4 +39,4 @@ class LeftMenu extends React.Component {
   }
 }
 
-export default withRouter(LeftMenu);
+export default LeftMenu;
