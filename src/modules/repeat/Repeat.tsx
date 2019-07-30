@@ -8,7 +8,22 @@ import Viewing from '../learningPage/components/viewing/Viewing';
 import Choice from '../learningPage/components/choice/Choice';
 import Typing from '../learningPage/components/typing/Typing';
 
-class Repeat extends React.Component {
+interface IOwnProps {
+  dispatchGetUserwords: any;
+  dispatchFinishRepeat: any;
+  repeatingWords: any;
+  isLoading: any;
+  isError: any;
+  history: any;
+}
+
+interface IState {
+  studyModes: Array<any>;
+  index: number;
+  wordsCount: number;
+}
+
+class Repeat extends React.Component<IOwnProps> {
   state = {
     studyModes: [],
     index: 0, 
@@ -22,7 +37,7 @@ class Repeat extends React.Component {
   }
 
   onCompleteMode = () => {
-    this.setState((prev) => ({ index: prev.index + 1 }));
+    this.setState((prev: IState) => ({ index: prev.index + 1 }));
   }
 
   onFinishRepeat = (words) => {

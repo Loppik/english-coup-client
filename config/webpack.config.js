@@ -101,6 +101,13 @@ module.exports = function(webpackEnv) {
           sourceMap: isEnvProduction && shouldUseSourceMap,
         },
       },
+      {
+        loader: 'typings-for-css-modules-loader',
+        options: {
+          modules: true,
+          namedExport: true
+        }
+      },
     ].filter(Boolean);
     if (preProcessor) {
       loaders.push({
@@ -295,7 +302,7 @@ module.exports = function(webpackEnv) {
         // First, run the linter.
         // It's important to do this before Babel processes the JS.
         {
-          test: /\.(js|mjs|jsx)$/,
+          test: /\.(js|mjs|jsx|ts|tsx)$/,
           enforce: 'pre',
           use: [
             {
@@ -361,7 +368,7 @@ module.exports = function(webpackEnv) {
             // Process any JS outside of the app with Babel.
             // Unlike the application JS, we only compile the standard ES features.
             {
-              test: /\.(js|mjs)$/,
+              test: /\.(js|mjs|ts)$/,
               exclude: /@babel(?:\/|\\{1,2})runtime/,
               loader: require.resolve('babel-loader'),
               options: {
@@ -394,6 +401,7 @@ module.exports = function(webpackEnv) {
             {
               test: cssRegex,
               exclude: cssModuleRegex,
+              include: path.join(__dirname, 'src'),
               use: getStyleLoaders({
                 importLoaders: 1,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
@@ -501,7 +509,7 @@ module.exports = function(webpackEnv) {
       // a network request.
       isEnvProduction &&
         shouldInlineRuntimeChunk &&
-        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
+        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/, /runtime~.+[.]ts/]),
       // Makes some environment variables available in index.html.
       // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
       // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
@@ -575,14 +583,6 @@ module.exports = function(webpackEnv) {
           async: false,
           checkSyntacticErrors: true,
           tsconfig: paths.appTsConfig,
-          compilerOptions: {
-            module: 'esnext',
-            moduleResolution: 'node',
-            resolveJsonModule: true,
-            isolatedModules: true,
-            noEmit: true,
-            jsx: 'preserve',
-          },
           reportFiles: [
             '**',
             '!**/*.json',

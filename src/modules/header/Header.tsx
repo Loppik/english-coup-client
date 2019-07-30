@@ -6,7 +6,7 @@ import { removeTokens } from '../../storages/tokenStorage';
 class Header extends React.Component {
   onExit = () => {
     removeTokens();
-    this.props.history.push('/');
+    // this.props.history.push('/'); // FIXME: use browserHistory
   }
 
   render() {
@@ -23,4 +23,4 @@ class Header extends React.Component {
   }
 }
 
-export default withRouter(Header);
+export default Header;

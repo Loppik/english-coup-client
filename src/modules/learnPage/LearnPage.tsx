@@ -6,7 +6,17 @@ import { withRouter } from 'react-router-dom';
 
 import { Row, Col, Button } from 'antd';
 
-class LearnPage extends React.Component {
+interface IOwnProps {
+  dispatchGetCountAllLearningWords: any;
+  dispatchGetCountAllLearnedWords: any;
+  countLearningIsLoading: any;
+  countAllLearningWords: any;
+  countLearnedIsLoading: any;
+  countAllLearnedWords: any;
+  history: any;
+}
+
+class LearnPage extends React.Component<IOwnProps> {
   componentDidMount() {
     this.props.dispatchGetCountAllLearningWords();
     this.props.dispatchGetCountAllLearnedWords();

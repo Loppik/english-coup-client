@@ -4,7 +4,16 @@ import Viewing from '../viewing/Viewing';
 import Choice from '../choice/Choice';
 import Typing from '../typing/Typing';
 
-class LearningPage extends React.Component {
+interface IOwnProps {
+  dispatchGetUserwords: any;
+  dispatchFinishLearning: any;
+  history: any;
+  learningWords: any;
+  isLoading: any;
+  isError: any;
+}
+
+class LearningPage extends React.Component<IOwnProps> {
   state = {
     studyModes: [],
     index: 0, 
@@ -18,7 +27,7 @@ class LearningPage extends React.Component {
   }
 
   onCompleteMode = () => {
-    this.setState((prev) => ({ index: prev.index + 1 }));
+    this.setState((prev: any) => ({ index: prev.index + 1 }));
   }
 
   onFinishLearning = (words) => {

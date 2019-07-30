@@ -10,8 +10,11 @@ import AddWordsPage from '../../addWordsPage/containers/AddWordsPage';
 import LearnPage from '../../learnPage/LearnPage';
 import RepeatPage from '../../repeatPage/RepeatPage';
 
+interface IOwnProps {
+  history: any;
+}
 
-class ContentPage extends React.Component {
+class ContentPage extends React.Component<IOwnProps> {
   componentDidMount() {
     /*
     const token = window.localStorage.getItem('token');

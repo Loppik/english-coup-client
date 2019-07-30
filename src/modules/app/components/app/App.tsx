@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { getTokens } from '../../../../storages/tokenStorage';
@@ -11,15 +11,19 @@ import PrivateRoute from '../privateRoute/PrivateRoute';
 import LearningPage from '../../../learningPage/containers/LearningPage';
 import Repeat from '../../../repeat/Repeat';
 
+interface IOwnProps {
+  dispatchGetUserData: any;
+  dispatchSetTokens: any;
+  history: any;
+}
 
-
-class App extends Component {
+class App extends React.Component<IOwnProps> {
   componentDidMount() {
     const { dispatchGetUserData, dispatchSetTokens, history } = this.props;
     const tokens = getTokens();
     if (tokens) {
       dispatchSetTokens(tokens);
-      dispatchGetUserData(this.props.history);
+      dispatchGetUserData(history);
       /*
       console.log('token +')
       dispatch(callApi({

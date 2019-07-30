@@ -5,8 +5,21 @@ import arrowRight from '../../../../icons/arrow_right.svg';
 
 import styles from './viewing.css';
 
-class Viewing extends React.Component {
-  state = {
+interface IOwnProp {
+  words: any;
+  count: any;
+  onComplete: any;
+}
+
+interface IState {
+  words: any;
+  count: any;
+  onComplete: any;
+  nowWatchWordIndex: number;
+}
+
+class Viewing extends React.Component<IOwnProp> {
+  state: IState = {
     words: [],
     nowWatchWordIndex: 0,
     count: null,
@@ -22,7 +35,7 @@ class Viewing extends React.Component {
     if (nowWatchWordIndex === 0) {
       this.setState({ nowWatchWordIndex: count - 1 })
     } else {
-      this.setState((prev) => ({ nowWatchWordIndex: prev.nowWatchWordIndex - 1 }))
+      this.setState((prev: IState) => ({ nowWatchWordIndex: prev.nowWatchWordIndex - 1 }))
     }
   }
 
@@ -31,7 +44,7 @@ class Viewing extends React.Component {
     if (nowWatchWordIndex === count - 1) {
       this.setState({ nowWatchWordIndex: 0 })
     } else {
-      this.setState((prev) => ({ nowWatchWordIndex: prev.nowWatchWordIndex + 1 }))
+      this.setState((prev: IState) => ({ nowWatchWordIndex: prev.nowWatchWordIndex + 1 }))
     }
   }
 
@@ -56,7 +69,7 @@ class Viewing extends React.Component {
     return (
       <div className={styles.content}>
         <div className={styles.cardAndSwitch}>
-          <div className={styles.switch} onClick={this.swipeLeft}>
+          <div className={styles.switcher} onClick={this.swipeLeft}>
             <img src={arrowLeft} alt=""></img>
           </div>
           <div className={styles.flipCard}>
@@ -69,7 +82,7 @@ class Viewing extends React.Component {
               </div>
             </div>
           </div>
-          <div className={styles.switch} onClick={this.swipeRight}>
+          <div className={styles.switcher} onClick={this.swipeRight}>
             <img src={arrowRight} alt=""></img>
           </div>
         </div>
