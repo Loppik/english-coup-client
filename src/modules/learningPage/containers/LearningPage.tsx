@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import LearningPage from '../components/learningPage/LearningPage';
-import * as Resource from '../../../dataLoader/resources';
+import Resources from '../../../dataLoader/resources';
 import { callApi } from '../../../dataLoader/actions';
 
 const mapStateToProps = state => ({
@@ -12,13 +12,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   dispatchGetUserwords: () => dispatch(callApi({
-    resource: Resource.LearningWords,
+    resource: Resources.LearningWords,
     type: 'get',
     url: '/userwords'
   })),
 
   dispatchFinishLearning: (learningWords) => dispatch(callApi({
-    resource: Resource.LearningWords,
+    resource: Resources.LearningWords,
     type: 'put',
     url: '/userwords',
     content: learningWords,

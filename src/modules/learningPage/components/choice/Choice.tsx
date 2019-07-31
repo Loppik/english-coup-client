@@ -9,15 +9,17 @@ interface IOwnProps {
   isOriginalTranslation: any;
 }
 
+interface IProps extends IOwnProps {}
+
 interface IState {
-  words: Array<any>;
+  words: string[];
   nowWordIndex: any;
   count: any;
   onComplete: any;
   isOriginalTranslation: any;
 }
 
-class Choice extends React.Component<IOwnProps, IState> {
+class Choice extends React.Component<IProps, IState> {
   state: IState = {
     words: [],
     nowWordIndex: 0,
@@ -35,7 +37,7 @@ class Choice extends React.Component<IOwnProps, IState> {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: IProps) {
     this.setState({
       words: nextProps.words,
       nowWordIndex: 0,
@@ -45,9 +47,9 @@ class Choice extends React.Component<IOwnProps, IState> {
     });
   }
 
-  getRandomInt = max => Math.floor(Math.random()*max);
+  getRandomInt = (max: number) => Math.floor(Math.random()*max);
 
-  shuffle = ar => {
+  shuffle = (ar: any) => {
     let index = ar.length, randIndex, temp;
     while (index !== 0 ) {
       randIndex = this.getRandomInt(index);
@@ -79,7 +81,7 @@ class Choice extends React.Component<IOwnProps, IState> {
     if (option.word_id === words[nowWordIndex].word_id) {
       this.setState((prev: any) => ({ nowWordIndex: prev.nowWordIndex + 1 }));
     } else {
-      alert('Увы и ах, но данный ответ неверный')
+      alert('Увы и ах, но данный ответ неверный') // FIXME: awesome output
     }
   }
 

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import * as Resource from '@/dataLoader/resources';
-import { callApi } from '@/dataLoader/actions';
+import Resources from '@dtl/resources';
+import { callApi } from '@dtl/actions';
 import Login from '../components/login/Login';
 
 const mapStateToProps = state => ({
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   // dispatchLoginUser: (dataObject, history) => dispatch(loginUser(dataObject, history)),
   dispatchSignIn: (signInData, onSuccess) => dispatch(callApi({
-    resource: Resource.UserTokens,
+    resource: Resources.UserTokens,
     type: 'post',
     url: '/signin',
     content: signInData,
@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => ({
   })),
 
   dispatchGetUserData: () => dispatch(callApi({
-    resource: Resource.UserData,
+    resource: Resources.UserData,
     type: 'get',
     url: '/users',
   }))

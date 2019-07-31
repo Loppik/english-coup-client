@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
-import * as Resource from '@/dataLoader/resources';
-import { callApi } from '@/dataLoader/actions';
+import Resources from '@dtl/resources';
+import { callApi } from '@dtl/actions';
+
+// import { NetMethods } from '@/'
 import AddWordsPage from '../components/addWordsPage/AddWordsPage';
 
 const mapDispatchToProps = (dispatch: any) => ({
   dispatchAddUserword: (userword: any, onSuccess: any) => dispatch(callApi({
-    resource: Resource.AddUserword,
+    resource: Resources.AddUserword,
     type: 'post',
     url: '/userwords',
     content: userword,

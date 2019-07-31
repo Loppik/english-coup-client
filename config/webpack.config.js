@@ -272,7 +272,9 @@ module.exports = function(webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
-        '@': path.resolve(__dirname, '../src/'),
+        '@src': path.resolve(__dirname, '../src/'),
+        '@mdl': path.resolve(__dirname, '../src/modules/'),
+        '@dtl': path.resolve(__dirname, '../src/dataLoader/'),
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -509,7 +511,7 @@ module.exports = function(webpackEnv) {
       // a network request.
       isEnvProduction &&
         shouldInlineRuntimeChunk &&
-        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/, /runtime~.+[.]ts/]),
+        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
       // Makes some environment variables available in index.html.
       // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
       // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">

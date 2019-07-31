@@ -7,11 +7,17 @@ interface IOwnProps {
   dispatchAddUserword: any;
 }
 
+interface IState {
+  originalWord: string;
+  translationWord: string;
+  primaryTranslationWord: string;
+}
+
 class AddWordsPage extends React.Component<IOwnProps> {
-  state = {
+  state: IState = {
     originalWord: '',
     translationWord: '',
-    primaryTranslationWord: '',
+    primaryTranslationWord: '', 
   }
 
   onOriginalWordChange = (event: any) => {
