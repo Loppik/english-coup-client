@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import * as Resource from '@/dataLoader/resources';
-import { callApi } from '@/dataLoader/actions';
+import Resources from '@dtl/resources';
+import { callApi } from '@dtl/actions';
 import { Row, Col, Button } from 'antd';
 
 interface IOwnProps {
@@ -48,7 +48,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   dispatchGetCountAllLearnedWords: () => dispatch(callApi({
-    resource: Resource.CountAllLearnedWords,
+    resource: Resources.CountAllLearnedWords,
     type: 'get',
     url: '/userwords/learned'
   })), 

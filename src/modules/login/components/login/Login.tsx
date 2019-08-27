@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 import Input from '../../../../components/input/Input';
-import { setTokens } from '@/storages/tokenStorage';
+import { setTokens } from '@src/storages/tokenStorage';
 
 import styles from './login.css';
 

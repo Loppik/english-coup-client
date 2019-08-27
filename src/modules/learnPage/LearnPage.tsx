@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as Resource from '@/dataLoader/resources';
-import { callApi } from '@/dataLoader/actions';
+import Resources from '@dtl/resources';
+import { callApi } from '@dtl/actions';
 import { withRouter } from 'react-router-dom';
 
 import { Row, Col, Button } from 'antd';
@@ -63,12 +63,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchGetCountAllLearningWords: () => dispatch(callApi({
-    resource: Resource.CountAllLearningWords,
+    resource: Resources.CountAllLearningWords,
     type: 'get',
     url: '/userwords/left',
   })),
   dispatchGetCountAllLearnedWords: () => dispatch(callApi({
-    resource: Resource.CountAllLearnedWords,
+    resource: Resources.CountAllLearnedWords,
     type: 'get',
     url: '/userwords/learned'
   })),

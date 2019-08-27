@@ -1,8 +1,8 @@
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Registration from '../components/registration/Registration';
-import * as Resource from '@/dataLoader/resources';
-import { callApi } from '@/dataLoader/actions';
+import Resources from '@dtl/resources';
+import { callApi } from '@dtl/actions';
 
 const mapStateToProps = state => ({
   isError: state.data.userTokens.isError,
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   dispatchSignUp: (signUpData, onSuccess) => dispatch(callApi({
-    resource: Resource.UserTokens,
+    resource: Resources.UserTokens,
     type: 'post',
     url: '/signup',
     content: signUpData,
