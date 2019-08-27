@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Word, EmptyFunc } from '@mdl/types';
+import { getRandomInt, shuffleArrayElements } from '@mdl/helpers';
 
 import styles from './choice.css';
 
@@ -21,33 +22,18 @@ class Choice extends React.Component<IProps, IState> {
     nowWordIndex: 0,
   }
 
-  getRandomInt = (max: number) => Math.floor(Math.random()*max);
-
-  shuffle = (ar: Array<any>) => {
-    let index: number = ar.length, randIndex, temp;
-    while (index !== 0 ) {
-      randIndex = this.getRandomInt(index);
-      index -= 1;
-
-      temp = ar[randIndex];
-      ar[randIndex] = ar[index];
-      ar[index] = temp;
-    }
-    return ar;
-  }
-
   getFourOptions = () => {
     const { nowWordIndex } = this.state;
     let w = this.props.words.slice();
     let res = [w[nowWordIndex]];
     w.splice(nowWordIndex, 1);
     while (res.length !== 4) {
-      const randIndex = this.getRandomInt(w.length);
+      const randIndex = getRandomInt(0, w.length);
       const randWord = w[randIndex];
       w.splice(randIndex, 1);
       res.push(randWord);
     }
-    return this.shuffle(res);
+    return shuffleArrayElements(res);
   }
 
   clickOnOption = (option: Word) => {
