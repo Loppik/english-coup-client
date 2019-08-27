@@ -16,11 +16,11 @@ const locale = Cookie.get('locale') || (Cookie.set('locale', 'en-US') && 'en-US'
 const messages = locale === 'ru-RU' ? russian : english;
 
 ReactDOM.render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -1,7 +1,6 @@
-const reduxActions = require('redux-actions');
+import * as reduxActions from 'redux-actions'
 
-exports.callApi = reduxActions.createAction('CALL_API');
-exports.callApiSuccess = reduxActions.createAction('CALL_API_SUCCESS');
-exports.callApiFail = reduxActions.createAction('CALL_API_FAIL');
-
-exports.setTokens = reduxActions.createAction('SET_TOKENS');
+export const callApi = reduxActions.createAction('CALL_API');
+export const callApiSuccess = reduxActions.createAction('CALL_API_SUCCESS');
+export const callApiFail = reduxActions.createAction('CALL_API_FAIL');
+export const setTokens = reduxActions.createAction('SET_TOKENS');

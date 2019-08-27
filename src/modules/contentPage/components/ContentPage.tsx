@@ -26,13 +26,17 @@ class ContentPage extends React.Component<IOwnProps> {
   }
 
   onAddClick = () => {
+    /*
     const { history } = this.props;
     history.push('/add');
+    */
   }
 
   onLearningClick = () => {
+    /*
     const { history } = this.props;
     history.push('/learning');
+    */
   }
 
   render() {
