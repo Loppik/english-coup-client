@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Resources from '@dtl/resources';
+import RESOURCES from '@dtl/resources';
 import { callApi } from '@dtl/actions';
 
 import Viewing from '../learningPage/components/viewing/Viewing';
@@ -96,13 +96,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   dispatchGetUserwords: () => dispatch(callApi({
-    resource: Resources.RepeatingWords,
+    resource: RESOURCES.REPEATING_WORDS,
     type: 'get',
     url: '/userwords/repeat'
   })),
 
   dispatchFinishRepeat: (repeatingWords) => dispatch(callApi({
-    resource: Resources.RepeatingWords,
+    resource: RESOURCES.REPEATING_WORDS,
     type: 'put',
     url: '/userwords',
     content: repeatingWords,

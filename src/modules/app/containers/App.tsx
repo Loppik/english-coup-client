@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Resources from '@dtl/resources';
+import RESOURCES from '@dtl/resources';
 import { callApi, setTokens } from '@dtl/actions';
 import App from '../components/app/App';
 
 const mapDispatchToProps = (dispatch: any) => ({
   // dispatchGetUserData: (history) => dispatch(getUserData(history)),
   dispatchGetUserData: () => dispatch(callApi({
-    resource: Resources.UserData,
+    resource: RESOURCES.USER_DATA,
     type: 'get',
     url: '/users',
   })),

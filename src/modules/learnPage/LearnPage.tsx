@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Resources from '@dtl/resources';
+import RESOURCES from '@dtl/resources';
 import { callApi } from '@dtl/actions';
 import { withRouter } from 'react-router-dom';
 
@@ -63,12 +63,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchGetCountAllLearningWords: () => dispatch(callApi({
-    resource: Resources.CountAllLearningWords,
+    resource: RESOURCES.COUNT_ALL_LEARNING_WORDS,
     type: 'get',
     url: '/userwords/left',
   })),
   dispatchGetCountAllLearnedWords: () => dispatch(callApi({
-    resource: Resources.CountAllLearnedWords,
+    resource: RESOURCES.COUNT_ALL_LEARNED_WORDS,
     type: 'get',
     url: '/userwords/learned'
   })),

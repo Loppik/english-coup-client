@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 
 class LeftMenu extends React.Component {

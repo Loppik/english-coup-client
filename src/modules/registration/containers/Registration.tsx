@@ -1,7 +1,7 @@
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Registration from '../components/registration/Registration';
-import Resources from '@dtl/resources';
+import RESOURCES from '@dtl/resources';
 import { callApi } from '@dtl/actions';
 
 const mapStateToProps = state => ({
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   dispatchSignUp: (signUpData, onSuccess) => dispatch(callApi({
-    resource: Resources.UserTokens,
+    resource: RESOURCES.USER_TOKENS,
     type: 'post',
     url: '/signup',
     content: signUpData,

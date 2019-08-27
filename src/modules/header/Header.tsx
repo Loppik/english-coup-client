@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { Row, Col, Button } from 'antd';
 import { removeTokens } from '../../storages/tokenStorage';
 

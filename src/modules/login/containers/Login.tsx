@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Resources from '@dtl/resources';
+import RESOURCES from '@dtl/resources';
 import { callApi } from '@dtl/actions';
 import Login from '../components/login/Login';
 
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   // dispatchLoginUser: (dataObject, history) => dispatch(loginUser(dataObject, history)),
   dispatchSignIn: (signInData, onSuccess) => dispatch(callApi({
-    resource: Resources.UserTokens,
+    resource: RESOURCES.USER_DATA,
     type: 'post',
     url: '/signin',
     content: signInData,
@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => ({
   })),
 
   dispatchGetUserData: () => dispatch(callApi({
-    resource: Resources.UserData,
+    resource: RESOURCES.USER_DATA,
     type: 'get',
     url: '/users',
   }))

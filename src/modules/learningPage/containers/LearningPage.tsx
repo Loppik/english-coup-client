@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import LearningPage from '../components/learningPage/LearningPage';
-import Resources from '@dtl/resources';
-import { callApi } from '@dtl/actions';
+import { getUserwords, sendLearnedWords } from '../api';
 
 const mapStateToProps = state => ({
   learningWords: state.data.learningWords.data,
@@ -10,19 +8,9 @@ const mapStateToProps = state => ({
   isError: state.data.learningWords.isError,
 });
 
-const mapDispatchToProps = dispatch => ({
-  dispatchGetUserwords: () => dispatch(callApi({
-    resource: Resources.LearningWords,
-    type: 'get',
-    url: '/userwords'
-  })),
+const mapDispatchToProps = {
+  dispatchGetUserwords: getUserwords,
+  dispatchFinishLearning: sendLearnedWords, 
+}
 
-  dispatchFinishLearning: (learningWords) => dispatch(callApi({
-    resource: Resources.LearningWords,
-    type: 'put',
-    url: '/userwords',
-    content: learningWords,
-  })) 
-})
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LearningPage));
+export default connect(mapStateToProps, mapDispatchToProps)(LearningPage);
