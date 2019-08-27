@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { getTokens } from '../../../../storages/tokenStorage';
 
@@ -46,11 +46,12 @@ class App extends React.Component<IOwnProps> {
   render() {
     return (
       <Switch>
-        <Route path="/signin" component={Login} />
-        <Route path="/signup" component={Registration} />
-        <PrivateRoute path="/learning" component={LearningPage} />
-        <PrivateRoute path="/repeating" component={Repeat} />
-        <PrivateRoute path="/" component={ContentPage} />
+        <Route path='/signin' component={Login} />
+        <Route path='/signup' component={Registration} />
+        <PrivateRoute path='/learning' component={LearningPage} />
+        <PrivateRoute path='/repeating' component={Repeat} />
+        <PrivateRoute path='/' component={ContentPage} />
+        <Redirect from='*' to='/' />
       </Switch>
     )
   }

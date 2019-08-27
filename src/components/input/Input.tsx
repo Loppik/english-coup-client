@@ -1,14 +1,19 @@
 import React from 'react';
 
-const Input = (props) => {
+// TODO: set normal types for props
+interface IOwnProps {
+  input: any;
+  type: any;
+  meta: any;
+}
+
+// TODO: start use this input component
+const Input = (props: IOwnProps) => {
   const { input, type, meta } = props;
   return (
     <React.Fragment>
-      {!meta.error &&
-        <input {...input} type={type} />
-      }
-
-      {meta.error && !meta.touched &&
+      {/* TODO: refactor this TWO input elements to ONE */}
+      {((!meta.error) || (meta.error && !meta.touched)) &&
         <input {...input} type={type} />
       }
       
