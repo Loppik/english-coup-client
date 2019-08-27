@@ -1,42 +1,37 @@
 import React from 'react';
 
+import { Word, EmptyFunc } from '@mdl/types';
+
 import styles from './typing.css';
 
 interface IOwnProps {
-  words: any;
-  count: any;
-  onComplete: any;
+  words: Word[];
+  count: number;
+  onComplete: EmptyFunc;
 }
 
 interface IState {
-  words: any;
-  count: any;
-  onComplete: any;
   nowWordIndex: number;
 }
 
-class Typing extends React.Component<IOwnProps> {
-  state: IState = {
-    words: [],
+interface IProps extends IOwnProps {};
+
+class Typing extends React.Component<IProps> {
+  readonly state: IState = {
     nowWordIndex: 0,
-    count: null,
-    onComplete: null,
   }
 
-  componentDidMount() {
-    this.setState({ words: this.props.words, count: this.props.count, onComplete: this.props.onComplete });
-  }
-
-  onInput = event => {
-    const { words, nowWordIndex } = this.state;
-    if (words[nowWordIndex].original === event.target.value) {
+  onInput = (event: any) => { // TODO: normal type
+    const { nowWordIndex } = this.state;
+    if (this.props.words[nowWordIndex].original === event.target.value) {
       event.target.value = '';
-      this.setState((prev: any) => ({ nowWordIndex: prev.nowWordIndex + 1 }));
+      this.setState((prev: IState) => ({ nowWordIndex: prev.nowWordIndex + 1 }));
     }
   }
 
   render() {
-    const { words, nowWordIndex, count, onComplete } = this.state;
+    const { words, count, onComplete } = this.props;
+    const { nowWordIndex } = this.state;
 
     if (words.length === 0) {
       return <div></div>
@@ -47,11 +42,10 @@ class Typing extends React.Component<IOwnProps> {
     }
 
     const word = words[nowWordIndex]
-    console.log(word)
     return (
       <div className={styles.content}>
         <h3>{word.translation}</h3>
-        <input type="text" onChange={this.onInput} />
+        <input type="text" onChange={this.onInput} /> {/* TODO: use common input element */}
       </div>
     )
   }
