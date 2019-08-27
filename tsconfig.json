@@ -17,11 +17,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "noEmitOnError": true,
-    "noImplicitAny": false,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@src/*": ["src/*"],
+      "@mdl/*": ["src/modules/*"],
+      "@dtl/*": ["src/dataLoader/*"]
     },
     "jsx": "preserve"
   },

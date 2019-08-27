@@ -1,5 +1,5 @@
 import { all } from 'redux-saga/effects';
-import { callApiWatcher } from './dataLoader/sagas';
+import { callApiWatcher } from '@dtl/sagas';
 
 export default function* rootSaga() {
   yield all([

@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import * as actions from './actions';
-import * as Resources from './resources';
+import Resources from './resources';
 
 const INITIAL_STATE = () => {
   let initState = {};
