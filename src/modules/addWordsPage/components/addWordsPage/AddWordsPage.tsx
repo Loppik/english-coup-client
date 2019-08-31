@@ -1,6 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import { API_URL } from '../../../../configs/config';
+import axios from '@src/axios';
 
 
 interface IOwnProps {
@@ -30,7 +29,7 @@ class AddWordsPage extends React.Component<IOwnProps> {
 
   onTranslateButtonClick = () => {
     const { originalWord } = this.state;
-    axios.post(`${API_URL}/translation`, {original: originalWord})
+    axios.post(`/translation`, {original: originalWord})
       .then((response) => {
         this.setState({ translationWord: response.data[0].translation, primaryTranslationWord: response.data[0].translation })
       })
