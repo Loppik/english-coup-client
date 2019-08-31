@@ -1,6 +1,6 @@
 import axios from 'axios';
 import store from './store';
-import { API_URL } from './configs/config';
+import configuration from './configs/config';
 
 const setAuthHeaderInterceptor = (config) => {
   const { data: { userTokens } } = store.getState(); // FIXME: deprecated getState
@@ -12,7 +12,7 @@ const setAuthHeaderInterceptor = (config) => {
   return config;
 };
 
-const axiosInst = axios.create({ baseURL: API_URL });
+const axiosInst = axios.create({ baseURL: configuration.API_URL });
 
 axiosInst.interceptors.request.use(setAuthHeaderInterceptor);
 
