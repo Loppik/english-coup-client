@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
+import { reduxForm, InjectedFormProps } from 'redux-form';
 import RESOURCES from '@dtl/resources';
 import { callApi } from '@dtl/actions';
 import Login from '../components/login/Login';
@@ -26,5 +27,7 @@ const mapDispatchToProps = dispatch => ({
   }))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
-
+export default compose(
+  reduxForm({ form: 'login' }),
+  connect(mapStateToProps, mapDispatchToProps)
+);

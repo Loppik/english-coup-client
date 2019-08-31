@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ComponentClass} from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { getTokens } from '../../../../storages/tokenStorage';
@@ -46,8 +46,8 @@ class App extends React.Component<IOwnProps> {
   render() {
     return (
       <Switch>
-        <Route path='/signin' component={Login} />
-        <Route path='/signup' component={Registration} />
+        <Route path='/signin' component={Login as unknown as ComponentClass} /> {/* FIXME: do something with this */}
+        <Route path='/signup' component={Registration as unknown as ComponentClass} />
         <PrivateRoute path='/learning' component={LearningPage} />
         <PrivateRoute path='/repeating' component={Repeat} />
         <PrivateRoute path='/' component={ContentPage} />

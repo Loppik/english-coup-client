@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 
 import Input from '../../../../components/input/Input';
 import { setTokens } from '@src/storages/tokenStorage';
@@ -15,7 +15,9 @@ interface IOwnProps {
   isError: any;
 }
 
-class Login extends React.Component<IOwnProps> {
+interface IProps extends IOwnProps {};
+
+class Login extends React.Component<IProps> {
   handleSubmit = values => this.props.dispatchSignIn(values, this.onSuccessSignIn);
 
   onSuccessSignIn = () => {
@@ -51,8 +53,4 @@ class Login extends React.Component<IOwnProps> {
   }
 }
 
-const LoginReduxForm = reduxForm({
-  form: 'login',
-})(Login);
-
-export default LoginReduxForm;
+export default Login;

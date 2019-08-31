@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 
 import Input from '../../../../components/input/Input';
 
@@ -53,8 +53,6 @@ class Registration extends React.Component<IOwnProp> {
   }
 }
 
-const RegistrationReduxForm = reduxForm({
-  form: 'reg',
-})(Registration);
 
-export default RegistrationReduxForm;
+
+export default Registration;
