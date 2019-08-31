@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RESOURCES from '@dtl/resources';
 import { callApi } from '@dtl/actions';
-import { withRouter } from 'react-router-dom';
 
 import { Row, Col, Button } from 'antd';
 
@@ -74,4 +73,4 @@ const mapDispatchToProps = (dispatch) => ({
   })),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LearnPage));
+export default connect(mapStateToProps, mapDispatchToProps)(LearnPage);

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import RESOURCES from '@dtl/resources';
 import { callApi, setTokens } from '@dtl/actions';
 import App from '../components/app/App';
@@ -15,4 +14,4 @@ const mapDispatchToProps = (dispatch: any) => ({
   dispatchSetTokens: (tokens: any) => dispatch(setTokens(tokens)),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default connect(null, mapDispatchToProps)(App);

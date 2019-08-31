@@ -1,5 +1,6 @@
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { reduxForm } from 'redux-form';
 import Registration from '../components/registration/Registration';
 import RESOURCES from '@dtl/resources';
 import { callApi } from '@dtl/actions';
@@ -18,5 +19,7 @@ const mapDispatchToProps = dispatch => ({
   }))
 });
 
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Registration));
+export default compose(
+  reduxForm({ form: 'reg' }),
+  connect(mapStateToProps, mapDispatchToProps)
+)(Registration); // THINK: can't use just component because import not as ReduxForm but written as ReduxForm, if you import component you nedd create new ReduxForm
