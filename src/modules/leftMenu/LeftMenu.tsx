@@ -1,27 +1,30 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
 
-class LeftMenu extends React.Component {
-  redirectTo = path => {
-    // this.props.history.push(path); // FIXME: 
-  }
+interface IOwnProps {
+  historyPush: (path: string) => void;
+}
 
+interface IProps extends IOwnProps {}
+
+class LeftMenu extends React.Component<IProps> {
   render() {
+    const { historyPush } = this.props;
     return (
       <Menu mode="vertical" inlineCollapsed={true}>
-        <Menu.Item key="1" onClick={() => this.redirectTo('/')}>
+        <Menu.Item key="1" onClick={() => historyPush('/')}>
           <Icon type="appstore" />
           <span>Основная</span>
         </Menu.Item>
-        <Menu.Item key="2" onClick={() => this.redirectTo('/add')}>
+        <Menu.Item key="2" onClick={() => historyPush('/add')}>
           <Icon type="plus-square" />
           <span>Добавить</span>
         </Menu.Item>
-        <Menu.Item key="3" onClick={() => this.redirectTo('/learn')}>
+        <Menu.Item key="3" onClick={() => historyPush('/learn')}>
           <Icon type="bulb" />
           <span>Изучить</span>
         </Menu.Item>
-        <Menu.Item key="4" onClick={() => this.redirectTo('/repeat')}>
+        <Menu.Item key="4" onClick={() => historyPush('/repeat')}>
           <Icon type="interation" />
           <span>Повторить</span>
         </Menu.Item>

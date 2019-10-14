@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { reduxForm, InjectedFormProps } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import RESOURCES from '@dtl/resources';
 import { callApi } from '@dtl/actions';
 import Login from '../components/login/Login';
+import {ComponentClass} from 'react';
 
 const mapStateToProps = state => ({
   isError: state.data.userTokens.isError,
@@ -30,4 +31,4 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   reduxForm({ form: 'login' }),
   connect(mapStateToProps, mapDispatchToProps)
-);
+)(Login) as ComponentClass;

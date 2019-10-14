@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RESOURCES from '@dtl/resources';
-import { callApi } from '@dtl/actions';
-
 import { Row, Col, Button } from 'antd';
+
+import { IReactRouter } from '@mdl/interfaces';
+import { callApi } from '@dtl/actions';
+import RESOURCES from '@dtl/resources';
 
 interface IOwnProps {
   dispatchGetCountAllLearningWords: any;
@@ -12,10 +13,11 @@ interface IOwnProps {
   countAllLearningWords: any;
   countLearnedIsLoading: any;
   countAllLearnedWords: any;
-  history: any;
 }
 
-class LearnPage extends React.Component<IOwnProps> {
+interface IProps extends IOwnProps, IReactRouter {}
+
+class LearnPage extends React.Component<IProps> {
   componentDidMount() {
     this.props.dispatchGetCountAllLearningWords();
     this.props.dispatchGetCountAllLearnedWords();

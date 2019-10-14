@@ -1,17 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RESOURCES from '@dtl/resources';
-import { callApi } from '@dtl/actions';
 import { Row, Col, Button } from 'antd';
+
+import { IReactRouter } from '@mdl/interfaces';
+import { callApi } from '@dtl/actions';
+import RESOURCES from '@dtl/resources';
 
 interface IOwnProps {
   dispatchGetCountAllLearnedWords: any;
   countIsLoading: any;
   countAllLearnedWords: any;
-  history: any;
 }
 
-class RepeatPage extends React.Component<IOwnProps> {
+interface IProps extends IOwnProps, IReactRouter {}
+
+class RepeatPage extends React.Component<IProps> {
   componentDidMount() {
     this.props.dispatchGetCountAllLearnedWords();
   }
