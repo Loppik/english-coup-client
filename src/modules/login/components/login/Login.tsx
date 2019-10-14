@@ -3,19 +3,19 @@ import { Field } from 'redux-form';
 
 import Input from '../../../../components/input/Input';
 import { setTokens } from '@src/storages/tokenStorage';
+import { IReactRouter } from '@mdl/interfaces';
 
 import styles from './login.css';
 
 interface IOwnProps {
   dispatchSignIn: any;
   dispatchGetUserData: any;
-  history: any;
   handleSubmit: any;
   tokens: any;
   isError: any;
 }
 
-interface IProps extends IOwnProps {};
+interface IProps extends IOwnProps, IReactRouter {};
 
 class Login extends React.Component<IProps> {
   handleSubmit = values => this.props.dispatchSignIn(values, this.onSuccessSignIn);
@@ -23,7 +23,7 @@ class Login extends React.Component<IProps> {
   onSuccessSignIn = () => {
     setTokens(this.props.tokens)
     this.props.dispatchGetUserData();
-    this.props.history.push('/')
+    this.props.history.push('/');
   }
 
   render() {

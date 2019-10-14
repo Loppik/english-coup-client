@@ -10,7 +10,7 @@ export const shuffleArrayElements = (ar: any[]) => {
     ar = swapTwoArrayElements(ar, randIndex, index);
   }
   return ar;
-}
+};
 
 // TESTME:
 export const swapTwoArrayElements = (ar: any[], firstIndex: number, secondIndex: number) => {
@@ -18,4 +18,4 @@ export const swapTwoArrayElements = (ar: any[], firstIndex: number, secondIndex:
   ar[firstIndex] = ar[secondIndex];
   ar[secondIndex] = temp;
   return ar;
-}
+};

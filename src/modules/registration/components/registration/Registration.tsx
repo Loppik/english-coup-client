@@ -1,7 +1,9 @@
 import React from 'react';
-import { Field } from 'redux-form';
+import {Field} from 'redux-form';
 
 import Input from '../../../../components/input/Input';
+
+import { IReactRouter } from '@mdl/interfaces';
 
 import styles from './registration.css';
 
@@ -9,19 +11,20 @@ interface IOwnProp {
   dispatchSignUp: any;
   handleSubmit: any;
   isError: any;
-  history: any;
 }
 
-class Registration extends React.Component<IOwnProp> {
+interface IProps extends IOwnProp, IReactRouter {}
+
+class Registration extends React.Component<IProps> {
   handleSubmit = values => {
     delete values.confirmPassword;
     this.props.dispatchSignUp(values, this.redirectSignInPage);
-  }
+  };
 
   redirectSignInPage = () => this.props.history.push('/signin');
 
   render() {
-    const { handleSubmit, isError } = this.props;
+    const {handleSubmit, isError} = this.props;
     return (
       <div className={styles.content}>
         <form onSubmit={handleSubmit(this.handleSubmit)}>
@@ -52,7 +55,6 @@ class Registration extends React.Component<IOwnProp> {
     )
   }
 }
-
 
 
 export default Registration;

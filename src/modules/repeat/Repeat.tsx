@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RESOURCES from '@dtl/resources';
-import { callApi } from '@dtl/actions';
 
 import Viewing from '../learningPage/components/viewing/Viewing';
 import Choice from '../learningPage/components/choice/Choice';
 import Typing from '../learningPage/components/typing/Typing';
+
+import { IReactRouter } from '@mdl/interfaces';
+import { callApi } from '@dtl/actions';
+import RESOURCES from '@dtl/resources';
 
 interface IOwnProps {
   dispatchGetUserwords: any;
@@ -13,8 +15,9 @@ interface IOwnProps {
   repeatingWords: any;
   isLoading: any;
   isError: any;
-  history: any;
 }
+
+interface IProps extends IOwnProps, IReactRouter {}
 
 interface IState {
   studyModes: any[];
@@ -22,7 +25,7 @@ interface IState {
   wordsCount: number;
 }
 
-class Repeat extends React.Component<IOwnProps> {
+class Repeat extends React.Component<IProps> {
   state = {
     studyModes: [],
     index: 0, 
@@ -108,4 +111,5 @@ const mapDispatchToProps = dispatch => ({
   })) 
 })
 
+// @ts-ignore
 export default connect(mapStateToProps, mapDispatchToProps)(Repeat);

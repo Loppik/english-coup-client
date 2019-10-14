@@ -1,7 +1,7 @@
 import React, {ComponentClass} from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import { getTokens } from '../../../../storages/tokenStorage';
+import { getTokens } from '@src/storages/tokenStorage';
 
 import Login from '../../../login/containers/Login';
 import Registration from '../../../registration/containers/Registration';
@@ -11,13 +11,16 @@ import PrivateRoute from '../privateRoute/PrivateRoute';
 import LearningPage from '../../../learningPage/containers/LearningPage';
 import Repeat from '../../../repeat/Repeat';
 
+import { IReactRouter } from '@mdl/interfaces';
+
 interface IOwnProps {
   dispatchGetUserData: any;
   dispatchSetTokens: any;
-  history: any;
 }
 
-class App extends React.Component<IOwnProps> {
+interface IProps extends IOwnProps, IReactRouter {}
+
+class App extends React.Component<IProps> {
   componentDidMount() {
     const { dispatchGetUserData, dispatchSetTokens, history } = this.props;
     const tokens = getTokens();
@@ -46,8 +49,8 @@ class App extends React.Component<IOwnProps> {
   render() {
     return (
       <Switch>
-        <Route path='/signin' component={Login as unknown as ComponentClass} /> {/* FIXME: do something with this */}
-        <Route path='/signup' component={Registration as unknown as ComponentClass} />
+        <Route path='/signin' component={Login} />
+        <Route path='/signup' component={Registration} />
         <PrivateRoute path='/learning' component={LearningPage} />
         <PrivateRoute path='/repeating' component={Repeat} />
         <PrivateRoute path='/' component={ContentPage} />

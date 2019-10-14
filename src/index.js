@@ -18,7 +18,7 @@ const messages = locale === 'ru-RU' ? russian : english;
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <App/>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

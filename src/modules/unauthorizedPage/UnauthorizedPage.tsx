@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {ComponentClass} from 'react';
 import { Row, Button } from 'antd';
 
-class UnauthorizedPage extends React.Component {
-  redirectTo = path => {
-    // this.props.history.push(path); FIXME:
-  }
+import { IReactRouter } from '@mdl/interfaces';
+
+interface IProps extends IReactRouter {}
+
+class UnauthorizedPage extends React.Component<IProps> {
+  redirectTo = (path: string) => {
+    this.props.history.push('/repeating');
+  };
 
   render() {
     return (
@@ -21,4 +25,5 @@ class UnauthorizedPage extends React.Component {
   }
 }
 
+// @ts-ignore
 export default UnauthorizedPage;
