@@ -4,7 +4,7 @@ import axios from '../axios';
 
 const requestType = (type) => {
   switch (type) {
-    case 'get': return axios.get
+    case 'get': return axios.get // FIXME: GET POST PUT as constants
     case 'post': return axios.post
     case 'put': return axios.put
     default: return axios.get
@@ -22,7 +22,7 @@ function* callApi(action) {
       yield put(action.payload.onFail);
     }
   } catch (err) {
-    yield put(actions.callApiFail({err: err.response.data, resource: action.payload.resource}));
+    yield put(actions.callApiFail({err: err.response && err.response.data, resource: action.payload.resource})); // TODO: normal errors check without running server
   }
 }
 
