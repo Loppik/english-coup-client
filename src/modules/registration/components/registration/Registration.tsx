@@ -17,7 +17,7 @@ interface IProps extends IOwnProp, IReactRouter {}
 
 class Registration extends React.Component<IProps> {
   handleSubmit = values => {
-    delete values.confirmPassword;
+    delete values.confirm;
     this.props.dispatchSignUp(values, this.redirectSignInPage);
   };
 
