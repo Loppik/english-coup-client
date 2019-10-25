@@ -7,27 +7,33 @@ import { IReactRouter } from '@mdl/interfaces';
 
 import styles from './login.css';
 
-interface IOwnProps {
-  dispatchSignIn: any;
-  dispatchGetUserData: any;
-  handleSubmit: any;
-  tokens: any;
-  isError: any;
+interface IStateProps {
+  userTokens: any;
+  isUserTokensError: any;
 }
 
-interface IProps extends IOwnProps, IReactRouter {};
+interface IDispatchProps {
+  dispatchSignIn: any;
+  dispatchGetUserData: any;
+}
+
+interface IOwnProps {
+  handleSubmit: any;
+}
+
+interface IProps extends IStateProps, IDispatchProps, IOwnProps, IReactRouter {}
 
 class Login extends React.Component<IProps> {
   handleSubmit = values => this.props.dispatchSignIn(values, this.onSuccessSignIn);
 
-  onSuccessSignIn = () => {
-    setTokens(this.props.tokens)
+  onSuccessSignIn = (): void => {
+    setTokens(this.props.userTokens);
     this.props.dispatchGetUserData();
     this.props.history.push('/');
-  }
+  };
 
   render() {
-    const { handleSubmit, isError } = this.props;
+    const { handleSubmit, isUserTokensError } = this.props;
     return (
       <div className={styles.content}>
         <form onSubmit={handleSubmit(this.handleSubmit)}>
@@ -45,7 +51,7 @@ class Login extends React.Component<IProps> {
               type="password"
             />
           </label>
-          <p style={{color: 'red'}}>{isError}</p>
+          <p style={{color: 'red'}}>{isUserTokensError}</p>
           <button type="submit" className={styles.authBtn}>Войти</button>
         </form>
       </div>
