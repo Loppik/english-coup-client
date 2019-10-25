@@ -1,3 +1,12 @@
+Import rules:
+  1. Dependencies
+  1. Components
+  1. Modules (mdl)
+  1. DataLoader (dtl)
+  1. Files/helpers for this module
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
