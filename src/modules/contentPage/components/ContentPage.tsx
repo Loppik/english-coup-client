@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Row, Col } from 'antd';
 
 import Header from '../../header/Header';
 import LeftMenu from '../../leftMenu/LeftMenu';
@@ -32,19 +31,19 @@ class ContentPage extends React.Component<IProps> {
     return (
       <React.Fragment>
         <Header />
-        <Row>
-          <Col sm={3}>
+        <div>
+          <div>
             <LeftMenu historyPush={(path) => this.historyPush(path)} />
-          </Col>
-          <Col sm={21}>
+          </div>
+          <div>
             <Switch>
               <Route path='/add' component={AddWordsPage} />
               <Route path='/learn' component={LearnPage} />
               <Route path='/repeat' component={RepeatPage} />
               <Route path='/' component={MainPage} />
             </Switch>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </React.Fragment>
     )
   }

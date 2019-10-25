@@ -1,5 +1,4 @@
 import React from 'react';
-import { Row, Col, Button } from 'antd';
 import { removeTokens } from '../../storages/tokenStorage';
 
 class Header extends React.Component {
@@ -10,14 +9,14 @@ class Header extends React.Component {
 
   render() {
     return (
-      <Row style={{ height: '10vh', borderBottom: '1px solid grey', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-        <Col sm={22} style={{display: 'flex', justifyContent: 'center'}}>
+      <div style={{ height: '10vh', borderBottom: '1px solid grey', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+        <div style={{display: 'flex', justifyContent: 'center'}}>
           <h1>Добро пожаловать на English_coup</h1>
-        </Col>
-        <Col sm={2}>
-          <Button onClick={this.onExit}>Выход</Button>
-        </Col>
-      </Row>
+        </div>
+        <div>
+          <button onClick={this.onExit}>Выход</button>
+        </div>
+      </div>
     )
   }
 }
