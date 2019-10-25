@@ -1,5 +1,4 @@
 import React from 'react';
-import { Menu, Icon } from 'antd';
 
 interface IOwnProps {
   historyPush: (path: string) => void;
@@ -8,35 +7,37 @@ interface IOwnProps {
 interface IProps extends IOwnProps {}
 
 class LeftMenu extends React.Component<IProps> {
+  redirectTo = (path: string): void => {
+    this.props.historyPush(path);
+  };
+
+  redirectToMainPage = (): void => this.redirectTo('/');
+  redirectToAddPage = (): void => this.redirectTo('/add');
+  redirectToLearnPage = (): void => this.redirectTo('/learn');
+  redirectToRepeatPage = (): void => this.redirectTo('/repeat');
+
   render() {
-    const { historyPush } = this.props;
     return (
-      <Menu mode="vertical" inlineCollapsed={true}>
-        <Menu.Item key="1" onClick={() => historyPush('/')}>
-          <Icon type="appstore" />
+      <ul >
+        <li onClick={this.redirectToMainPage}>
           <span>Основная</span>
-        </Menu.Item>
-        <Menu.Item key="2" onClick={() => historyPush('/add')}>
-          <Icon type="plus-square" />
+        </li>
+        <li onClick={this.redirectToAddPage}>
           <span>Добавить</span>
-        </Menu.Item>
-        <Menu.Item key="3" onClick={() => historyPush('/learn')}>
-          <Icon type="bulb" />
+        </li>
+        <li onClick={this.redirectToLearnPage}>
           <span>Изучить</span>
-        </Menu.Item>
-        <Menu.Item key="4" onClick={() => historyPush('/repeat')}>
-          <Icon type="interation" />
+        </li>
+        <li onClick={this.redirectToRepeatPage}>
           <span>Повторить</span>
-        </Menu.Item>
-        <Menu.Item key="5">
-          <Icon type="line-chart" />
+        </li>
+        <li>
           <span>Графики</span>
-        </Menu.Item>
-        <Menu.Item key="6">
-          <Icon type="setting" />
+        </li>
+        <li>
           <span>Настройки</span>
-        </Menu.Item>
-      </Menu>
+        </li>
+      </ul>
     )
   }
 }

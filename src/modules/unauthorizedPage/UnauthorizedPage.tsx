@@ -1,5 +1,4 @@
 import React, {ComponentClass} from 'react';
-import { Row, Button } from 'antd';
 
 import { IReactRouter } from '@mdl/interfaces';
 
@@ -15,15 +14,15 @@ class UnauthorizedPage extends React.Component<IProps> {
 
   render() {
     return (
-      <Row style={{paddingTop: '40vh'}}>
-        <Row style={{display: 'flex', justifyContent: 'center'}}>
+      <div style={{paddingTop: '40vh'}}>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
           <h1>English_coup / необходима авторизация</h1>
-        </Row>
-        <Row style={{display: 'flex', justifyContent: 'center'}}>
-          <Button onClick={this.redirectToSignInPage}>Логин</Button>
-          <Button onClick={this.redirectToSignUpPage} style={{marginLeft: '10px'}}>Регистрация</Button>
-        </Row>
-      </Row>
+        </div>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+          <button onClick={this.redirectToSignInPage}>Логин</button>
+          <button onClick={this.redirectToSignUpPage} style={{marginLeft: '10px'}}>Регистрация</button>
+        </div>
+      </div>
     )
   }
 }

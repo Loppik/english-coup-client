@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Button } from 'antd';
 
 import { IReactRouter } from '@mdl/interfaces';
 import { callApi } from '@dtl/actions';
@@ -29,27 +28,27 @@ class LearnPage extends React.Component<IProps> {
     const { countLearningIsLoading, countAllLearningWords, countLearnedIsLoading, countAllLearnedWords } = this.props;
 
     return (
-      <Row style={{marginTop: '30px'}}>
-        <Row>
-          <Col sm={6}>
+      <div style={{marginTop: '30px'}}>
+        <div>
+          <div>
             <h3>Цель на день: 10</h3>
-          </Col>
-          <Col sm={6}>
+          </div>
+          <div>
             <h3>Всего выученных слов: {!countLearnedIsLoading && countAllLearnedWords}</h3>
-          </Col>
-          <Col sm={6}>
+          </div>
+          <div>
             <h3>Осталось невыученных: {!countLearningIsLoading && countAllLearningWords}</h3>
-          </Col>
-        </Row>
-        <Row style={{marginTop: '20px'}}>
-          <Col sm={3}>
-            <Button type="dashed" onClick={this.redirectToLearningPage} disabled={!countLearningIsLoading && countAllLearningWords < 5}>Изучение слов</Button>
-          </Col>
-          <Col sm={6} style={{marginTop: '5px'}}>
+          </div>
+        </div>
+        <div style={{marginTop: '20px'}}>
+          <div>
+            <button onClick={this.redirectToLearningPage} disabled={!countLearningIsLoading && countAllLearningWords < 5}>Изучение слов</button>
+          </div>
+          <div  style={{marginTop: '5px'}}>
             {!countLearningIsLoading && countAllLearningWords < 5 && <h4>Недостаточно слов для изучения</h4>}
-          </Col>
-        </Row>
-      </Row>
+          </div>
+        </div>
+      </div>
       
     )
   }

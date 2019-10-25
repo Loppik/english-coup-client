@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Button } from 'antd';
 
 import { IReactRouter } from '@mdl/interfaces';
 import { callApi } from '@dtl/actions';
@@ -25,19 +24,19 @@ class RepeatPage extends React.Component<IProps> {
     const { countIsLoading, countAllLearnedWords } = this.props;
 
     return (
-      <Row style={{marginTop: '30px'}}>
-        <Row>
+      <div style={{marginTop: '30px'}}>
+        <div>
           <h3>Всего выученных слов: {!countIsLoading && countAllLearnedWords}</h3>
-        </Row>
-        <Row style={{marginTop: '20px'}}>
-          <Col sm={3}>
-            <Button type="dashed" onClick={this.redirectToRepeating} disabled={!countIsLoading && countAllLearnedWords < 5}>Повторение слов</Button>
-          </Col>
-          <Col sm={6} style={{marginTop: '5px'}}>
+        </div>
+        <div style={{marginTop: '20px'}}>
+          <div>
+            <button onClick={this.redirectToRepeating} disabled={!countIsLoading && countAllLearnedWords < 5}>Повторение слов</button>
+          </div>
+          <div style={{marginTop: '5px'}}>
             {!countIsLoading && countAllLearnedWords < 5 && <h4>Недостаточно слов для повторения</h4>}
-          </Col>
-        </Row>
-      </Row>
+          </div>
+        </div>
+      </div>
     )
   }
 }
