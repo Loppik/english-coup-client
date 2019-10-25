@@ -22,17 +22,32 @@ class Choice extends React.Component<IProps, IState> {
     nowWordIndex: 0,
   }
 
+  componentDidMount() {
+    console.log('did mount');
+  }
+
+  componentWillReceiveProps(nextProps: Readonly<IProps>, nextContext: any): void {
+    console.log('+++++++');
+  }
+
+  componentWillUnmount(): void {
+    console.log('unmount')
+  }
+
   getFourOptions = () => {
     const { nowWordIndex } = this.state;
     let w = this.props.words.slice();
     let res = [w[nowWordIndex]];
     w.splice(nowWordIndex, 1);
     while (res.length !== 4) {
-      const randIndex = getRandomInt(0, w.length);
+      const randIndex = getRandomInt(0, w.length - 1);
       const randWord = w[randIndex];
-      w.splice(randIndex, 1);
-      res.push(randWord);
+      if (randWord) {
+        res.push(randWord);
+        w.splice(randIndex, 1);
+      }
     }
+    console.log('correct', res);
     return shuffleArrayElements(res);
   }
 
@@ -49,6 +64,7 @@ class Choice extends React.Component<IProps, IState> {
     const { words, count, onComplete, isOriginalTranslation } = this.props;
     const { nowWordIndex } = this.state;
     const options: Word[] = this.getFourOptions();
+    console.log(options, nowWordIndex)
     if (words.length === 0) {
       return <div></div>
     }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import LearningPage from '../components/learningPage/LearningPage';
-import { getUserwords, sendLearnedWords } from '../api';
+import { getLearnUserwords, sendLearnedWords } from '../api';
 
 const mapStateToProps = state => ({
   learningWords: state.data.learningWords.data,
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  dispatchGetUserwords: getUserwords,
+  dispatchGetLearnUserwords: getLearnUserwords,
   dispatchFinishLearning: sendLearnedWords, 
 }
 

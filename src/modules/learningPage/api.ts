@@ -3,7 +3,7 @@ import RESOURCES from '@dtl/resources';
 import { HTTP_METHODS } from '@mdl/constants';
 import { Word } from '@mdl/types';
 
-export const getUserwords = () => callApi({
+export const getLearnUserwords = () => callApi({
   resource: RESOURCES.LEARNING_WORDS,
   type: HTTP_METHODS.GET,
   url: '/userwords'
