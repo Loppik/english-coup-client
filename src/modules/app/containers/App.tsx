@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
+
+import App from '../components/app/App';
+
 import { withRouter } from 'react-router-dom';
 import RESOURCES from '@dtl/resources';
 import { callApi, setTokens } from '@dtl/actions';
-import App from '../components/app/App';
 
 const mapDispatchToProps = (dispatch: any) => ({
   // dispatchGetUserData: (history) => dispatch(getUserData(history)),
