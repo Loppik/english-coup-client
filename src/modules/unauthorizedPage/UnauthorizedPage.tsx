@@ -6,9 +6,12 @@ import { IReactRouter } from '@mdl/interfaces';
 interface IProps extends IReactRouter {}
 
 class UnauthorizedPage extends React.Component<IProps> {
-  redirectTo = (path: string) => {
-    this.props.history.push('/repeating');
+  redirectTo = (path: string): void => {
+    this.props.history.push(path);
   };
+
+  redirectToSignInPage = (): void => this.redirectTo('signin');
+  redirectToSignUpPage = (): void => this.redirectTo('signup');
 
   render() {
     return (
@@ -17,13 +20,12 @@ class UnauthorizedPage extends React.Component<IProps> {
           <h1>English_coup / необходима авторизация</h1>
         </Row>
         <Row style={{display: 'flex', justifyContent: 'center'}}>
-          <Button onClick={() => this.redirectTo('signin')}>Логин</Button>
-          <Button onClick={() => this.redirectTo('signup')} style={{marginLeft: '10px'}}>Регистрация</Button>
+          <Button onClick={this.redirectToSignInPage}>Логин</Button>
+          <Button onClick={this.redirectToSignUpPage} style={{marginLeft: '10px'}}>Регистрация</Button>
         </Row>
       </Row>
     )
   }
 }
 
-// @ts-ignore
 export default UnauthorizedPage;

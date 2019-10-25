@@ -16,9 +16,9 @@ interface IOwnProps {
 }
 
 interface IState {
-  studyModes: STUDY_MODES[],
-  index: number,
-  wordsCount: number
+  studyModes: STUDY_MODES[];
+  index: number;
+  wordsCount: number;
 }
 
 interface IProps extends IOwnProps {};
