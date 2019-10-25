@@ -44,7 +44,7 @@ const callApiFail = (state, action) => {
     ...state,
     [path]: {
       data: [],
-      isError: action.payload.err.msg, 
+      isError: action.payload.err && action.payload.err.msg,
       isLoading: false,
     }
   });
