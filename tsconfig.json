@@ -24,7 +24,7 @@
       "@mdl/*": ["src/modules/*"],
       "@dtl/*": ["src/dataLoader/*"]
     },
-    "jsx": "preserve"
+    "jsx": "react"
   },
   "include": [
     "src"
