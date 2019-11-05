@@ -49,7 +49,7 @@ class Registration extends React.Component<IProps> {
               type="password"
             />
           </label>
-          <button type="submit" className={styles.authBtn}>Регистрация</button>
+          <button type="submit">Регистрация</button>
         </form>
       </div>
     )
