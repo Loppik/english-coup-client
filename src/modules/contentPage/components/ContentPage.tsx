@@ -30,7 +30,7 @@ class ContentPage extends React.Component<IProps> {
   render() {
     return (
       <React.Fragment>
-        <Header />
+        <Header historyPush={(path) => this.historyPush(path)} />
         <div>
           <div>
             <LeftMenu historyPush={(path) => this.historyPush(path)} />
