@@ -52,18 +52,18 @@ class Choice extends React.Component<IProps, IState> {
     const { nowWordIndex } = this.state;
     const options: Word[] = this.getFourOptions();
     if (words.length === 0) {
-      return <div></div>
+      return <div/>
     }
     if (nowWordIndex === count) {
       onComplete();
-      return <div></div>
+      return <div/>
     }
     const mainWord: Word = words[nowWordIndex];
     return (
-      <div className={styles.content}>
+      <React.Fragment>
         <h3>{ isOriginalTranslation ? mainWord.original : mainWord.translation }</h3>
         { options.map((option) => <div className={styles.option} key={option.wordId} onClick={() => this.clickOnOption(option)}>{ isOriginalTranslation ? option.translation : option.original }</div>) }
-      </div>
+      </React.Fragment>
     )
   }
 }

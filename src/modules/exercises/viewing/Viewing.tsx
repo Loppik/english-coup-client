@@ -17,39 +17,39 @@ interface IState {
   watchedWordsIds: number[];
 }
 
-interface IProps extends IOwnProp {};
+interface IProps extends IOwnProp {}
 
 class Viewing extends React.Component<IProps, IState> {
   state: IState = {
     nowWatchWordIndex: 0,
     watchedWordsIds: [],
-  }
+  };
 
-  swipeLeft = () => {
+  swipeLeft = (): void => {
     const { nowWatchWordIndex } = this.state;
     if (nowWatchWordIndex === 0) {
       this.setState({ nowWatchWordIndex: this.props.count - 1 })
     } else {
       this.setState((prev: IState) => ({ nowWatchWordIndex: prev.nowWatchWordIndex - 1 }))
     }
-  }
+  };
 
-  swipeRight = () => {
+  swipeRight = (): void => {
     const { nowWatchWordIndex } = this.state;
     if (nowWatchWordIndex === this.props.count - 1) {
       this.setState({ nowWatchWordIndex: 0 })
     } else {
       this.setState((prev: IState) => ({ nowWatchWordIndex: prev.nowWatchWordIndex + 1 }))
     }
-  }
+  };
 
-  isAllWordsWatched = () => this.state.watchedWordsIds.length === this.props.count;
+  isAllWordsWatched = (): boolean => this.state.watchedWordsIds.length === this.props.count;
 
   render() {
     const { words, onComplete } = this.props;
     const { nowWatchWordIndex, watchedWordsIds } = this.state;
     if (words.length === 0) { // THINK:
-      return <div></div>
+      return <div/>
     }
 
     const nowWord = words[nowWatchWordIndex];
@@ -59,10 +59,10 @@ class Viewing extends React.Component<IProps, IState> {
     const isAllWordsWatched = this.isAllWordsWatched();
 
     return (
-      <div className={styles.content}>
+      <React.Fragment>
         <div className={styles.cardAndSwitch}>
           <div className={styles.switcher} onClick={this.swipeLeft}>
-            <img src={arrowLeft} alt="Назад"></img> {/* TODO: multi language */}
+            <img src={arrowLeft} alt="Назад"/> {/* TODO: multi language */}
           </div>
           <div className={styles.flipCard}>
             <div className={styles.flipCardInner}>
@@ -75,7 +75,7 @@ class Viewing extends React.Component<IProps, IState> {
             </div>
           </div>
           <div className={styles.switcher} onClick={this.swipeRight}>
-            <img src={arrowRight} alt="Вперёд"></img> {/* TODO: multi language */}
+            <img src={arrowRight} alt="Вперёд"/> {/* TODO: multi language */}
           </div>
         </div>
         {isAllWordsWatched && 
@@ -83,7 +83,7 @@ class Viewing extends React.Component<IProps, IState> {
             <h4>Remembered</h4>
           </div>
         }
-      </div>
+      </React.Fragment>
     )
   }
 }

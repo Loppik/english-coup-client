@@ -1,4 +1,3 @@
-export const content: string;
 export const cardAndSwitch: string;
 export const flipCard: string;
 export const flipCardInner: string;
