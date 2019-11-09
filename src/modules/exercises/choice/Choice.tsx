@@ -20,24 +20,12 @@ interface IProps extends IOwnProps {}
 class Choice extends React.Component<IProps, IState> {
   state: IState = {
     nowWordIndex: 0,
-  }
+  };
 
-  componentDidMount() {
-    console.log('did mount');
-  }
-
-  componentWillReceiveProps(nextProps: Readonly<IProps>, nextContext: any): void {
-    console.log('+++++++');
-  }
-
-  componentWillUnmount(): void {
-    console.log('unmount')
-  }
-
-  getFourOptions = () => {
+  getFourOptions = (): Word[] => {
     const { nowWordIndex } = this.state;
-    let w = this.props.words.slice();
-    let res = [w[nowWordIndex]];
+    const w = [...this.props.words];
+    const res: Word[] = [w[nowWordIndex]];
     w.splice(nowWordIndex, 1);
     while (res.length !== 4) {
       const randIndex = getRandomInt(0, w.length - 1);
@@ -47,24 +35,22 @@ class Choice extends React.Component<IProps, IState> {
         w.splice(randIndex, 1);
       }
     }
-    console.log('correct', res);
     return shuffleArrayElements(res);
-  }
+  };
 
-  clickOnOption = (option: Word) => {
+  clickOnOption = (option: Word): void => {
     const { words } = this.props;
     if (option.wordId === words[this.state.nowWordIndex].wordId) {
-      this.setState((prev: any) => ({ nowWordIndex: prev.nowWordIndex + 1 }));
+      this.setState((prev: IState) => ({ nowWordIndex: prev.nowWordIndex + 1 }));
     } else {
       alert('Увы и ах, но данный ответ неверный') // FIXME: awesome output
     }
-  }
+  };
 
   render() {
     const { words, count, onComplete, isOriginalTranslation } = this.props;
     const { nowWordIndex } = this.state;
     const options: Word[] = this.getFourOptions();
-    console.log(options, nowWordIndex)
     if (words.length === 0) {
       return <div></div>
     }
