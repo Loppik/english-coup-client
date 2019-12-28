@@ -22,6 +22,7 @@ const Input = (props: IOwnProps) => {
       }
 
       <div>{ input.name }</div>
+      {meta.touched && ((meta.error && <span style={{color:'red'}}>{meta.error}</span>))}
     </React.Fragment>
   )
 }
