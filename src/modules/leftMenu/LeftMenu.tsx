@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './leftMenu.css';
+
 interface IOwnProps {
   historyPush: (path: string) => void;
 }
@@ -18,7 +20,7 @@ class LeftMenu extends React.Component<IProps> {
 
   render() {
     return (
-      <ul >
+      <ul className={styles.nav}>
         <li onClick={this.redirectToMainPage}>
           <span>Основная</span>
         </li>

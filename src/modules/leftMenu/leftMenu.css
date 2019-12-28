@@ -1,3 +1,7 @@
-.nav-menu:hover {
+:local .nav {
+  padding-right: 100px;
+}
+
+:local .nav li:hover {
   cursor: pointer;
 }

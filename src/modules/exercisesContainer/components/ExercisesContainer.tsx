@@ -3,6 +3,8 @@ import {EmptyFunc, Word} from '@mdl/types';
 import { EXERCISES_NAMES } from '../constants';
 import { getExerciseComponent } from '../helpers';
 
+import styles from './exercisesContainer.css';
+
 interface IOwnProps {
   dispatchGetWords: EmptyFunc;
   words: Word[];
@@ -38,7 +40,7 @@ class ExercisesContainer extends React.Component<IProps, IState> {
 
     if (isError) return <div>Bad situation (:</div> // TODO:
     if (isLoading || words === null || words.length === 0) {
-      return <div></div>
+      return <div/>
     }
 
     const component = getExerciseComponent(exercisesNames[exerciseIndex], words, wordsCount, this.onCompleteExercise);
@@ -47,7 +49,9 @@ class ExercisesContainer extends React.Component<IProps, IState> {
     return (
       <React.Fragment>
         {!isLoading && !isError && (
-          component
+          <div className={styles.content}>
+            {component}
+          </div>
         )}
       </React.Fragment>
     )

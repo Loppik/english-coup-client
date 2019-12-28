@@ -11,6 +11,8 @@ import RepeatPage from '../../repeatPage/RepeatPage';
 
 import { IReactRouter } from '@mdl/interfaces';
 
+import styles from './contentPage.css';
+
 interface IProps extends IReactRouter {}
 
 class ContentPage extends React.Component<IProps> {
@@ -23,17 +25,13 @@ class ContentPage extends React.Component<IProps> {
 
   historyPush = (path: string) => this.props.history.push(path);
 
-  onAddClick = () => this.historyPush('/add');
-
-  onLearningClick = () => this.historyPush('/learning');
-
   render() {
     return (
       <React.Fragment>
-        <Header />
-        <div>
+        <Header historyPush={this.historyPush} />
+        <div className={styles.container}>
           <div>
-            <LeftMenu historyPush={(path) => this.historyPush(path)} />
+            <LeftMenu historyPush={this.historyPush} />
           </div>
           <div>
             <Switch>

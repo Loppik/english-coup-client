@@ -52,7 +52,7 @@ class Login extends React.Component<IProps> {
             />
           </label>
           <p style={{color: 'red'}}>{isUserTokensError}</p>
-          <button type="submit" className={styles.authBtn}>Войти</button>
+          <button type="submit">Войти</button>
         </form>
       </div>
     )

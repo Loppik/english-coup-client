@@ -1,11 +1,16 @@
 import React from 'react';
 import { removeTokens } from '../../storages/tokenStorage';
 
-class Header extends React.Component {
-  onExit = () => {
+interface IOwnProps {
+  historyPush: (path: string) => void;
+}
+interface IProps extends IOwnProps {}
+
+class Header extends React.Component<IProps> {
+  onExit = (): void => {
     removeTokens();
-    // this.props.history.push('/'); // FIXME: use browserHistory
-  }
+    this.props.historyPush('/');
+  };
 
   render() {
     return (
