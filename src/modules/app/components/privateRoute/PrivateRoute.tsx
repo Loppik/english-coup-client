@@ -3,10 +3,10 @@ import { Route } from 'react-router-dom';
 
 import { getTokens } from '@src/storages/tokenStorage';
 import UnauthorizedPage from '../../../unauthorizedPage/UnauthorizedPage';
-const PrivateRoute = ({ component: Component, ...rest }) =>
+const PrivateRoute = ({ component: Component, ...rest }: any) =>
   <Route
     { ...rest }
-    render={(props: any) => (
+    render={(props) => (
       getTokens()
         ? <Component {...props} />
         : <UnauthorizedPage {...props} />
