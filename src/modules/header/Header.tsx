@@ -1,5 +1,6 @@
 import React from 'react';
 import { removeTokens } from '../../storages/tokenStorage';
+import SantaHat from '@src/components/SantaHat';
 
 interface IOwnProps {
   historyPush: (path: string) => void;
@@ -17,6 +18,7 @@ class Header extends React.Component<IProps> {
       <div style={{ height: '10vh', borderBottom: '1px solid grey', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
         <div style={{display: 'flex', justifyContent: 'center'}}>
           <h1>Добро пожаловать на English_coup</h1>
+          <SantaHat/>
         </div>
         <div>
           <button onClick={this.onExit}>Выход</button>

@@ -1,0 +1,18 @@
+.santaImg {
+  width: 50px;
+  height: 40px;
+  position: relative;
+  top: 4px;
+  right: 14px;
+  transition: transform 1s, top 0.5s;
+  cursor: pointer;
+}
+
+.santaImgDressed {
+  transform: rotate(20deg);
+}
+
+.santaImgFell {
+  transform: rotate(45deg);
+  top: 15px;
+}
