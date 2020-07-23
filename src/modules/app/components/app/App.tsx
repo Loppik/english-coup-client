@@ -1,4 +1,4 @@
-import React, {ComponentClass} from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { getTokens } from '@src/storages/tokenStorage';
@@ -20,9 +20,9 @@ interface IOwnProps {
 
 interface IProps extends IOwnProps, IReactRouter {}
 
-class App extends React.Component<IProps> {
-  componentDidMount() {
-    const { dispatchGetUserData, dispatchSetTokens, history } = this.props;
+const App = ({ dispatchGetUserData, dispatchSetTokens, history }) => {
+
+  useEffect(() => {
     const tokens = getTokens();
     if (tokens) {
       dispatchSetTokens(tokens);
@@ -40,24 +40,22 @@ class App extends React.Component<IProps> {
       });
       */
     }
+  }, []);
+
+  const onFailGetUserData = () => {
+
   }
 
-  onFailGetUserData = () => {
-
-  }
-
-  render() {
-    return (
-      <Switch>
-        <Route path='/signin' component={Login} />
-        <Route path='/signup' component={Registration} />
-        <PrivateRoute path='/learning' component={LearningPage} />
-        <PrivateRoute path='/repeating' component={Repeat} />
-        <PrivateRoute path='/' component={ContentPage} />
-        <Redirect from='*' to='/' />
-      </Switch>
-    )
-  }
+  return (
+    <Switch>
+      <Route path='/signin' component={Login} />
+      <Route path='/signup' component={Registration} />
+      <PrivateRoute path='/learning' component={LearningPage} />
+      <PrivateRoute path='/repeating' component={Repeat} />
+      <PrivateRoute path='/' component={ContentPage} />
+      <Redirect from='*' to='/' />
+    </Switch>
+  )
 }
 
 export default App;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Header from '../../header/Header';
@@ -15,38 +15,29 @@ import styles from './contentPage.css';
 
 interface IProps extends IReactRouter {}
 
-class ContentPage extends React.Component<IProps> {
-  componentDidMount() {
-    const token = window.localStorage.getItem('token');
-    if (!token) {
-      this.historyPush('/');
-    }
-  }
+const ContentPage = ({ history }) => {
 
-  historyPush = (path: string) => this.props.history.push(path);
+  const historyPush = (path: string) => history.push(path);
 
 
-
-  render() {
-    return (
-      <React.Fragment>
-        <Header historyPush={this.historyPush} />
-        <div className={styles.container}>
-          <div>
-            <LeftMenu historyPush={this.historyPush} />
-          </div>
-          <div>
-            <Switch>
-              <Route path='/add' component={AddWordsPage} />
-              <Route path='/learn' component={LearnPage} />
-              <Route path='/repeat' component={RepeatPage} />
-              <Route path='/' component={MainPage} />
-            </Switch>
-          </div>
+  return (
+    <React.Fragment>
+      <Header historyPush={historyPush} />
+      <div className={styles.container}>
+        <div>
+          <LeftMenu historyPush={historyPush} />
         </div>
-      </React.Fragment>
-    )
-  }
+        <div>
+          <Switch>
+            <Route path='/add' component={AddWordsPage} />
+            <Route path='/learn' component={LearnPage} />
+            <Route path='/repeat' component={RepeatPage} />
+            <Route path='/' component={MainPage} />
+          </Switch>
+        </div>
+      </div>
+    </React.Fragment>
+  )
 }
 
 export default ContentPage;
