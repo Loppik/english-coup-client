@@ -4,6 +4,7 @@ import { EXERCISES_NAMES } from '../constants';
 import { getExerciseComponent } from '../helpers';
 
 import styles from './exercisesContainer.css';
+import { shuffleArrayElements } from '@mdl/helpers';
 
 interface IOwnProps {
   dispatchGetWords: EmptyFunc;
@@ -43,7 +44,7 @@ class ExercisesContainer extends React.Component<IProps, IState> {
       return <div/>
     }
 
-    const component = getExerciseComponent(exercisesNames[exerciseIndex], words, wordsCount, this.onCompleteExercise);
+    const component = getExerciseComponent(exercisesNames[exerciseIndex], shuffleArrayElements(words), wordsCount, this.onCompleteExercise);
     if (!component) this.props.onFullComplete(words);
 
     return (
