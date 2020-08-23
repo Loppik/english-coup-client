@@ -60,6 +60,8 @@
 }
 
 :local .remembered {
+  position: absolute;
+  margin-top: 230px;
   width: 402px;
   height: 30px;
   background-color: rgba(0, 255, 13, 0.685);

@@ -32,6 +32,10 @@ class Login extends React.Component<IProps> {
     this.props.history.push('/');
   };
 
+  redirectSignUpPage = () => {
+    this.props.history.push('/signup');
+  }
+
   render() {
     const { handleSubmit, isUserTokensError } = this.props;
     return (
@@ -52,7 +56,10 @@ class Login extends React.Component<IProps> {
             />
           </label>
           <p style={{color: 'red'}}>{isUserTokensError}</p>
-          <button type="submit">Войти</button>
+          <div>
+            <button type="submit">Войти</button>
+            <button type="button" onClick={this.redirectSignUpPage}>Регистрация</button>
+          </div>
         </form>
       </div>
     )
