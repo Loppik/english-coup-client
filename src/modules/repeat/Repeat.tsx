@@ -22,11 +22,7 @@ class Repeat extends React.Component<IProps> {
   getExercisesNames = (): EXERCISES_NAMES[] => [EXERCISES_NAMES.VIEWING];
   onFullComplete = (words: Word[]) => {
     this.props.dispatchFinishRepeat(words);
-    this.redirectToMainPage();
-  };
-
-  redirectToMainPage = (): void => {
-    this.props.history.push('/');
+    this.props.history.goBack();
   };
 
   render() {

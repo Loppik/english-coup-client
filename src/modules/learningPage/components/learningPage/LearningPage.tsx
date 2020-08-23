@@ -20,11 +20,7 @@ class LearningPage extends React.Component<IProps> {
   getExercisesNames = (): EXERCISES_NAMES[] => [EXERCISES_NAMES.VIEWING, EXERCISES_NAMES.CHOICE_ORIGINAL_TRANSLATION, EXERCISES_NAMES.CHOICE_TRANSLATION_ORIGINAL, EXERCISES_NAMES.TYPING];
   onFullComplete = (words: Word[]) => {
     this.props.dispatchFinishLearning(words);
-    this.redirectToMainPage();
-  };
-
-  redirectToMainPage = (): void => {
-    this.props.history.push('/');
+    this.props.history.goBack();
   };
 
   render() {

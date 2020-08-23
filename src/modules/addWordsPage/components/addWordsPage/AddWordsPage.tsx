@@ -57,7 +57,7 @@ class AddWordsPage extends React.Component<IOwnProps> {
       <div style={{marginTop: '50px'}}>
         <input value={originalWord} onChange={this.onOriginalWordChange} />
         <input value={translationWord} onChange={this.onTranslationWordChange} />
-        <button onClick={this.onTranslateButtonClick}>Перевести</button>
+        <button onClick={this.onTranslateButtonClick} disabled>Перевести</button>
         <button onClick={this.onAddButtonClick}>Добавить</button>
       </div>
     )
