@@ -1,1 +1,1 @@
-export const content: string;
+export const iamhere: string;
